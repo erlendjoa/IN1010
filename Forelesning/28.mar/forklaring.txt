@@ -1,0 +1,22 @@
+Psvm i Stortingsvalg();
+
+Opprettelse av objekter Stemmesystem() og MonitorStemmesystem(stemmesystem).
+    Stemmesystem oppretter en tom ArrayDeque<Parti>.
+    MonitorStemmesystem oppretter:
+        Stemmesystem() deklarert parameter i konstruør.
+        ReentrantLock(),
+        Condition() til denne låsen,
+
+
+Opprettelse av tom array av Thread[5];
+
+
+Opprettelse og .start() av hver Thread(new Stemmeteller()) i stemmetellere.
+    Runnable som føres inn i Thread() er Stemmeteller(monitor, id, 5, ca10);
+
+
+Trådene vil kjøre hver sin .run() i Stemmeteller().
+    For-løkke vil kjøre antall stemmer per stemmeteller.
+    Tråden kjører monitor.taUtStemme() for å returnere et enum Parti.
+    Metoden kjører laas.lock() slik at ingen andre tråder kan bruke metoden samtidig.
+    Tråden bruker while-løkke for å hele tiden sjekke om 

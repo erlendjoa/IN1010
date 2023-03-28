@@ -2,6 +2,8 @@
 
 public class LearnThread implements Runnable{
     
+    // Learn Threads!
+    
     public static void main(String[] args) {
 
         LearnThread lt1 = new LearnThread();

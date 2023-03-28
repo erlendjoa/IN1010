@@ -2,7 +2,7 @@ public class TestTraader {
     
     public static void main(String[] args) {
 
-        oppgaveC();
+        oppgaveD();
     }
 
     public static void oppgaveB() {
@@ -29,7 +29,8 @@ public class TestTraader {
     }
 
     public static void oppgaveD() {
-        
+        Monitor monitor = new Monitor();
+        monitor.skrivUtTall(69);
     }
 }
     

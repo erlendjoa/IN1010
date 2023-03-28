@@ -5,18 +5,35 @@ Opprettelse av objekter Stemmesystem() og MonitorStemmesystem(stemmesystem).
     MonitorStemmesystem oppretter:
         Stemmesystem() deklarert parameter i konstruør.
         ReentrantLock(),
-        Condition() til denne låsen,
+        Condition() til denne låsen;
 
 
-Opprettelse av tom array av Thread[5];
+Opprettelse av tom array av Thread med plass til 5;
 
 
-Opprettelse og .start() av hver Thread(new Stemmeteller()) i stemmetellere.
-    Runnable som føres inn i Thread() er Stemmeteller(monitor, id, 5, ca10);
+Opprettelse og .start() av hver Thread() hvor:
+    Runnable parameter er Stemmeteller(MonitorStemmesystem, int, int);
 
 
 Trådene vil kjøre hver sin .run() i Stemmeteller().
     For-løkke vil kjøre antall stemmer per stemmeteller.
     Tråden kjører monitor.taUtStemme() for å returnere et enum Parti.
-    Metoden kjører laas.lock() slik at ingen andre tråder kan bruke metoden samtidig.
-    Tråden bruker while-løkke for å hele tiden sjekke om 
+    Metoden kjører Lock.lock() slik at ingen andre tråder kan bruke metoden samtidig.
+    Tråden bruker while-løkke for å sette Condition.await() slik at den venter helt til det ikke er tomt;
+
+
+Opprettelse av CountDownLatch(4)
+
+
+Opprettelse av to Thread() hvor:
+    Runnable parameter er Valglokale(MonitorStemmesystem, String, CountDownLatch, int),
+    .start() av begge tråder;
+
+Valglokale har som parameter:
+    MonitorStemmesystem, String sted,
+    CountDownLatch og int antallStemmerPerUrne;
+    .run() kjører CTL.getCount() for å få den nåværende int.
+    while int er større enn 0 vil tråden kjøre monitor.leggTilStemme() 10 ganger;
+
+
+For-løkke passer på at alle Thread stemmeteller er ferdige før psvm fortsetter med bruk av .join();

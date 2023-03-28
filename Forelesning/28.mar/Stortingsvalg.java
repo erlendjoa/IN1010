@@ -22,7 +22,7 @@ public class Stortingsvalg
             stemmetellere[i] = new Thread(new Stemmeteller(monitor, i, ANTALL_STEMMER_PER_TELLER));
             stemmetellere[i].start();
         }
-
+        
         CountDownLatch antallUrner = new CountDownLatch(ANTALL_URNER);
 
         Thread blindern = new Thread(new Valglokale(monitor, "Blindern", antallUrner,  ANTALL_STEMMER_PER_URNE));

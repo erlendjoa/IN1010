@@ -4,26 +4,26 @@ import java.util.concurrent.locks.Condition;
 
 public class Monitor {
 
-    private final Lock lock;
-    private final Condition condition;
+    private final Lock laas;
+    private final Condition cond;
     
     public Monitor() {
-        lock = new ReentrantLock();
-        condition = lock.newCondition();
+        laas = new ReentrantLock();
+        cond = laas.newCondition();
     }
 
     public void skrivUtTall(int nyttTall) throws InterruptedException {
-        lock.lock();
+        laas.lock();
         try {
 
             while(nyttTall != 10) {
-                condition.await();
+                cond.await();
             }
 
             System.out.println(nyttTall);
         }
         finally {
-            lock.unlock();
+            laas.unlock();
         }
     }
 }

@@ -15,11 +15,6 @@ public class Monitor {
     public void skrivUtTall(int nyttTall) throws InterruptedException {
         laas.lock();
         try {
-
-            while(nyttTall != 10) {
-                cond.await();
-            }
-
             System.out.println(nyttTall);
         }
         finally {

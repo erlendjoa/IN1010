@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Starter saksprodusenter...");
         saksProdusenter[0].start();
         saksProdusenter[1].start();
+        
 
     }
     

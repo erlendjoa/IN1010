@@ -20,10 +20,9 @@ public class KnivMonitor {
     public Kniv[] taUtKniver() {
         laas.lock();
         try {
-            if (kniverArr.size() < 2) {
+            if (kniverArr.size() <= 2) {
                 return null;
             }
-            System.out.println(hentAntKniver());
                 Kniv[] tempKniver = {kniverArr.remove(0), kniverArr.remove(1)};
                 return tempKniver;
         }

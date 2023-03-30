@@ -14,6 +14,8 @@ public class SaksProdusent implements Runnable{
         while (tempKniver != null) {
             Saks nySaks = new Saks(tempKniver[0], tempKniver[1]);
             saksMonitor.settInnSaks(nySaks);
+            tempKniver = knivMonitor.taUtKniver();
+            
         }
         System.out.println(saksMonitor.hentAntSakser());
     }

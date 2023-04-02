@@ -5,7 +5,7 @@ public class Main {
         Postkontor postKontor = new Postkontor();
 
         for (int i = 0; i < 10; i++) {
-            Postmann postmann = new Postmann();
+            Postmann postmann = new Postmann(postKontor);
             Thread traad = new Thread(postmann);
             traad.start();
         }

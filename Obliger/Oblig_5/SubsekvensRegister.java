@@ -32,7 +32,7 @@ public class SubsekvensRegister {
                 String line = scanner.nextLine();
                 int start = 0; int end = 3;
 
-                while (end != line.length()+1 && line.length() > 3) {
+                while (end != line.length()+1 && line.length() >= 3) {
                     String sekString = line.substring(start, end);
                     /*
                     for (int i = 0; i < hashMap.size(); i++) {
@@ -50,4 +50,21 @@ public class SubsekvensRegister {
 
         catch (FileNotFoundException e) {
             return null; } }
+
+        
+    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
+        HashMap <String,Subsekvens> nyHashMap = new HashMap<>();
+        
+        for (String key1 : hM1.keySet()) {  //legg til og hvis mulig kombiner sekvenser.
+            for (String key2 : hM2.keySet()) {
+                if (key1 == key2) {
+                    int antall = hM1.get(key1).hentAntall() + hM2.get(key2).hentAntall();
+                    hM1.get(key1).settAntall(antall); } }
+            nyHashMap.put(key1, hM1.get(key1)); }
+        
+        for (String key2 : hM2.keySet()) {  //legg til resterende sekvenser.
+            if (!nyHashMap.containsKey(key2)) {
+                nyHashMap.put(key2, hM2.get(key2)); } }
+        
+        return nyHashMap; }
 }

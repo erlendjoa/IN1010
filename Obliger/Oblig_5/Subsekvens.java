@@ -19,6 +19,6 @@ public class Subsekvens {
     }
 
     public String toString() {
-        return "( " + subskv + "," + antall + ")";
+        return "(" + subskv + "," + antall + ")";
     }
 }

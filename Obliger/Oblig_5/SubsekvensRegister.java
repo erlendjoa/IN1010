@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SubsekvensRegister {
     
     public ArrayList <HashMap<String,Subsekvens> > register = new ArrayList<>();
-    
+
 
     public void settInn(HashMap<String,Subsekvens> hashMap) {
         register.add(hashMap); }
@@ -30,9 +30,9 @@ public class SubsekvensRegister {
 
             while (scanner.hasNext()) {
                 String line = scanner.nextLine();
-                int start = 0; int end = 2;
+                int start = 0; int end = 3;
 
-                while (end != line.length() && line.length() > 3) {
+                while (end != line.length()+1 && line.length() > 3) {
                     String sekString = line.substring(start, end);
                     /*
                     for (int i = 0; i < hashMap.size(); i++) {
@@ -42,7 +42,6 @@ public class SubsekvensRegister {
                             break; } }
                     */
                     Subsekvens sekvens = new Subsekvens(sekString, 1);
-                    System.out.println(sekvens);
                     hashMap.put(sekString, sekvens);
                     start++; end++; } }
 
@@ -50,6 +49,5 @@ public class SubsekvensRegister {
             return hashMap; }
 
         catch (FileNotFoundException e) {
-            System.out.println("Fant ikke fil.");
             return null; } }
 }

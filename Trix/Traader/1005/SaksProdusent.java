@@ -11,7 +11,7 @@ public class SaksProdusent implements Runnable{
     @Override
     public void run() {
         Kniv[] tempKniver = knivMonitor.taUtKniver();
-        while (tempKniver != null) {
+        while (tempKniver != null) 
             Saks nySaks = new Saks(tempKniver[0], tempKniver[1]);
             saksMonitor.settInnSaks(nySaks);
             tempKniver = knivMonitor.taUtKniver();

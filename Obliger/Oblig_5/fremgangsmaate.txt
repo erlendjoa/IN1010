@@ -1,0 +1,2 @@
+Analysere blodprøver for å finne mønstre som indikerer infeksjon av bestemt virus.
+

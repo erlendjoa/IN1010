@@ -14,6 +14,10 @@ public class Subsekvens {
     public int hentAntall() {
         return antall; }
 
+    public void settAntall(int nyAntall) {
+        antall = nyAntall;
+    }
+
     public String toString() {
         return "( " + subskv + "," + antall + ")";
     }

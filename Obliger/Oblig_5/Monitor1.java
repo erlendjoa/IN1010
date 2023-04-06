@@ -30,4 +30,14 @@ public class Monitor1 implements GlobalConstant{
             laas.unlock(); }
     }
 
+    public Subsekvens hentHoyest() {
+        Subsekvens hoyest = new Subsekvens("", 0);
+        HashMap<String,Subsekvens> hashMap = register.get(0);
+
+        for (String sekvens : hashMap.keySet()) {
+            if (hashMap.get(sekvens).hentAntall() > hoyest.hentAntall()) {
+                hoyest = hashMap.get(sekvens); } } 
+
+        System.out.println(register.size());
+        return hoyest; }
 }

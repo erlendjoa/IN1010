@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.HashMap;
 
 public class Main implements GlobalConstant{
     private final String path;
@@ -8,8 +7,8 @@ public class Main implements GlobalConstant{
         this.path = path; }
     
     public static void main (String[] args) {
-        Main obl5 = new Main("TestMappe");
-        obl5.kjor(); }
+        Main main = new Main("TestMappe");
+        main.kjor(); }
 
 
     public void kjor() {
@@ -34,6 +33,9 @@ public class Main implements GlobalConstant{
                 traad.join(); } 
             catch (InterruptedException e) {} }
 
+        System.out.println("Register size() = " + monitor.monitorRegister.size());    //Skal være 9
+
+
         // INITIERING (2) AV ALLE FLETTETRÅDER:
         for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {;
             fletteTraader[i] = new Thread(new FletteTrad(monitor));
@@ -44,16 +46,9 @@ public class Main implements GlobalConstant{
             try {
                 traad.join(); }
             catch (InterruptedException e) {} }
-        
-        // PRINT HØYEST ANTALL FOREKOMMEDE:
-        Subsekvens hoyest = new Subsekvens("", 0);
-        for (int i = 0; i < monitor.register.size(); i++) {
-            HashMap<String,Subsekvens> hashMap = monitor.register.get(i);
-            for (String sekvens : hashMap.keySet()) {
-                if (hashMap.get(sekvens).hentAntall() > hoyest.hentAntall()) {
-                    hoyest = hashMap.get(sekvens); } } }
+            
 
-        System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + hoyest);
+        System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + monitor.hentHoyest());
         System.out.println("=== Program HLT ===");
     }
 }

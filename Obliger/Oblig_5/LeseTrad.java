@@ -3,10 +3,10 @@ import java.util.HashMap;
 
 public class LeseTrad implements Runnable, GlobalConstant {
 
-    Monitor1 monitor;
+    Monitor2 monitor;
     File fil;
 
-    public LeseTrad(Monitor1 monitor, File fil) {
+    public LeseTrad(Monitor2 monitor, File fil) {
         this.monitor = monitor;
         this.fil = fil; }
 

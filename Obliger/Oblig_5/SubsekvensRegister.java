@@ -34,13 +34,7 @@ public class SubsekvensRegister {
 
                 while (end != line.length()+1 && line.length() >= 3) {
                     String sekString = line.substring(start, end);
-                    /*
-                    for (int i = 0; i < hashMap.size(); i++) {
-                        if (hashMap.get(i).subskv == sekString) {
-                            int nyAntall = hashMap.get(i).hentAntall() + 1;
-                            hashMap.get(i).settAntall(nyAntall); 
-                            break; } }
-                    */
+
                     Subsekvens sekvens = new Subsekvens(sekString, 1);
                     hashMap.put(sekString, sekvens);
                     start++; end++; } }
@@ -56,7 +50,7 @@ public class SubsekvensRegister {
     public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) {
         for (String nKey : nextHashMap.keySet()) {
             if (prevHashMap.containsKey(nKey)) {
-                int antall = prevHashMap.get(nKey).hentAntall() + 1;
+                int antall = prevHashMap.get(nKey).hentAntall() + nextHashMap.get(nKey).hentAntall();
                 prevHashMap.get(nKey).settAntall(antall);
             } else {
                 prevHashMap.put(nKey, nextHashMap.get(nKey)); } }

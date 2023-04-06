@@ -35,13 +35,20 @@ public class Oblig5Del1 {
         for (HashMap<String,Subsekvens> hashMap : subRegister2.register) {
             nyHashMap2 = subRegister2.settSammen(nyHashMap2, hashMap); }
         
-        Subsekvens hoyest = new Subsekvens("", 0);
+
+    
+        Subsekvens hoyest1 = new Subsekvens("", 0);
         for (String sekvens : nyHashMap1.keySet()) {
-            if (nyHashMap1.get(sekvens).hentAntall() > hoyest.hentAntall()) {
-                hoyest = nyHashMap1.get(sekvens); } }
+            if (nyHashMap1.get(sekvens).hentAntall() > hoyest1.hentAntall()) {
+                hoyest1 = nyHashMap1.get(sekvens); } }
+        System.out.println("= Subsekvens med hoyest antall i /TestData: " + hoyest1);
 
-
-        System.out.println("Subsekvens med hoyest antall: " + hoyest);
+        Subsekvens hoyest2 = new Subsekvens("", 0);
+        for (String sekvens : nyHashMap2.keySet()) {
+            if (nyHashMap2.get(sekvens).hentAntall() > hoyest2.hentAntall()) {
+                hoyest2 = nyHashMap2.get(sekvens); } }
+        System.out.println("= Subsekvens med hoyest antall i /TestDataLike: " + hoyest2);
+            
         System.out.println("=== Program HLT ===");
     }
 }

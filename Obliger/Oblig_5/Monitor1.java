@@ -50,18 +50,13 @@ public class Monitor1 implements GlobalConstant{
             return null; }
         
         finally {
-            laas.unlock();
-            if (register.size() == MAX_ANT_FILER) {
-                cond.signalAll(); } }
+            laas.unlock(); }
     }
 
     
     public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) throws InterruptedException {
         laas.lock();
         try {
-            if (register.size() < MAX_ANT_FILER) {  // kanskje while lokke
-                cond.await(); }
-
             for (String nKey : nextHashMap.keySet()) {
                 if (prevHashMap.containsKey(nKey)) {
                     int antall = prevHashMap.get(nKey).hentAntall() + nextHashMap.get(nKey).hentAntall();
@@ -70,6 +65,9 @@ public class Monitor1 implements GlobalConstant{
                     prevHashMap.put(nKey, nextHashMap.get(nKey)); } }
             return prevHashMap;  }
 
+        catch (NullPointerException e) {
+            return null; }
+            
         finally {
             laas.unlock(); }
     }

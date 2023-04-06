@@ -17,21 +17,37 @@ public class Main implements GlobalConstant{
         Monitor1 monitor = new Monitor1();
         File[] testDataFiler = new File[MAX_ANT_FILER];
         Thread[] traader = new Thread[MAX_ANT_FILER];
+        Thread[] fletteTraader = new Thread[MAX_ANT_FLETTETRADER];
+
         for (int i = 0; i < MAX_ANT_FILER; i++) {
             testDataFiler[i] = new File(path + "/TestData/fil" + (i+1) + ".csv"); }
 
         
-        // INITIERING AV ALLE TRÅDER:
+        // INITIERING (1) AV ALLE FILLESING TRÅDER:
         for (int i = 0; i < MAX_ANT_FILER; i++) {
             LeseTrad leseTraad = new LeseTrad(monitor, testDataFiler[i]);
             Thread traad = new Thread(leseTraad);
             traader[i] = traad;
             traad.start(); }
 
-        // VENT PÅ FULLFØRING AV TRÅDER:
+        // VENT PÅ FULLFØRING...
         for (Thread traad : traader) {
             try {
                 traad.join(); } 
+            catch (InterruptedException e) {
+                System.out.println(e); } }
+
+        // INITIERING (2) AV ALLE FLETTETRÅDER:
+        for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {
+            FletteTrad fletteTraad = new FletteTrad(monitor);
+            Thread traad = new Thread(fletteTraad);
+            fletteTraader[i] = traad;
+            traad.start(); }
+        
+        // VENT PÅ FULLFØRING...
+        for (Thread traad : fletteTraader) {
+            try {
+                traad.join(); }
             catch (InterruptedException e) {
                 System.out.println(e); } }
         
@@ -43,7 +59,6 @@ public class Main implements GlobalConstant{
                 if (hashMap.get(sekvens).hentAntall() > hoyest.hentAntall()) {
                     hoyest = hashMap.get(sekvens); } } }
 
-        System.out.println(monitor.register);
         System.out.println("= Subsekvens med hoyest antall i /TestData: " + hoyest);
         System.out.println("=== Program HLT ===");
     }

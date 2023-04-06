@@ -59,12 +59,17 @@ public class SubsekvensRegister {
             for (String key2 : hM2.keySet()) {
                 if (key1 == key2) {
                     int antall = hM1.get(key1).hentAntall() + hM2.get(key2).hentAntall();
-                    hM1.get(key1).settAntall(antall); } }
-            nyHashMap.put(key1, hM1.get(key1)); }
+                    hM1.get(key1).settAntall(antall); }
+                if (!hM1.containsKey(key2) || !nyHashMap.containsKey(key2)) {
+                    nyHashMap.put(key2, hM2.get(key2)); } 
+            }
+            nyHashMap.put(key1, hM1.get(key1));
+        }
         
+        /*
         for (String key2 : hM2.keySet()) {  //legg til resterende sekvenser.
             if (!nyHashMap.containsKey(key2)) {
                 nyHashMap.put(key2, hM2.get(key2)); } }
-        
+        */
         return nyHashMap; }
 }

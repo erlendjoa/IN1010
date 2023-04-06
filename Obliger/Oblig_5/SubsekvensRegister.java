@@ -46,7 +46,7 @@ public class SubsekvensRegister {
             System.out.println("Fant ikke fil.");
             return null; } }
 
-        
+        // sett sammen
     public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) {
         for (String nKey : nextHashMap.keySet()) {
             if (prevHashMap.containsKey(nKey)) {

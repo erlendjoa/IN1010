@@ -8,12 +8,13 @@ import java.util.concurrent.locks.Condition;
 
 public class Monitor1 implements GlobalInt{
 
-    public ArrayList <HashMap<String,Subsekvens> > register = new ArrayList<>();
     private final ReentrantLock laas = new ReentrantLock();
-    private final Condition cond1 = laas.newCondition();
-    private final Condition cond2 = laas.newCondition();
+    private final Condition cond = laas.newCondition();
 
-    
+    SubsekvensRegister subRegister = new SubsekvensRegister();
+    public ArrayList <HashMap<String,Subsekvens> > register = new ArrayList<>();
+
+
     public void settInn(HashMap<String,Subsekvens> hashMap) {
         laas.lock();
         try {
@@ -51,7 +52,7 @@ public class Monitor1 implements GlobalInt{
         finally {
             laas.unlock();
             if (register.size() == MAX_ANT_FILER) {
-                cond1.signalAll(); } }
+                cond.signalAll(); } }
     }
 
     
@@ -59,7 +60,7 @@ public class Monitor1 implements GlobalInt{
         laas.lock();
         try {
             if (register.size() < MAX_ANT_FILER) {  // kanskje while lokke
-                cond1.await(); }
+                cond.await(); }
 
             for (String nKey : nextHashMap.keySet()) {
                 if (prevHashMap.containsKey(nKey)) {

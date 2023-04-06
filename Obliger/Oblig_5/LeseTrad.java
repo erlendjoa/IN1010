@@ -12,7 +12,7 @@ public class LeseTrad implements Runnable, GlobalInt {
 
     @Override
     public void run() {
-        HashMap<String,Subsekvens> hashMap = SubsekvensRegister.lesFil(fil);
+        HashMap<String,Subsekvens> hashMap = monitor.lesFil(fil);
         monitor.settInn(hashMap);
     } 
 }

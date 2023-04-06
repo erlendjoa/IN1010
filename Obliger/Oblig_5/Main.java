@@ -1,26 +1,30 @@
 import java.io.File;
 import java.util.HashMap;
 
-public class Oblig5Del1 {
+public class Main {
     String path;
 
-    public Oblig5Del1(String path) {
+    public Main(String path) {
         this.path = path; }
     
     public static void main (String[] args) {
-        Oblig5Del1 obl5 = new Oblig5Del1("TestMappe");
+        Main obl5 = new Main("TestMappe");
         obl5.kjor(); }
 
 
     public void kjor() {
-        File[] testDataFiler = new File[9];
-        File[] testDataLikeFiler = new File[9];
-        for (int i = 0; i < 9; i++) {
+        int antallFiler = 9;
+
+        File[] testDataFiler = new File[antallFiler];
+        File[] testDataLikeFiler = new File[antallFiler];
+        for (int i = 0; i < antallFiler; i++) {
             testDataFiler[i] = new File(path + "/TestData/fil" + (i+1) + ".csv"); 
             testDataLikeFiler[i] = new File(path + "/TestDataLike/fil" + (i+1) + ".csv"); }
 
         SubsekvensRegister subRegister1 = new SubsekvensRegister();
         SubsekvensRegister subRegister2 = new SubsekvensRegister();
+
+        
 
         for (File fil : testDataFiler) {
             subRegister1.settInn(SubsekvensRegister.lesFil(fil)); }

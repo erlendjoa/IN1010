@@ -54,5 +54,5 @@ public class SubsekvensRegister {
                 prevHashMap.get(nKey).settAntall(antall);
             } else {
                 prevHashMap.put(nKey, nextHashMap.get(nKey)); } }
-        return prevHashMap; }
+        return prevHashMap;  }
 }

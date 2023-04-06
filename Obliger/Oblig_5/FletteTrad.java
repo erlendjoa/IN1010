@@ -2,9 +2,9 @@ import java.util.HashMap;
 
 public class FletteTrad implements Runnable {
     
-    Monitor1 monitor;
+    Monitor2 monitor;
 
-    public FletteTrad(Monitor1 monitor) {
+    public FletteTrad(Monitor2 monitor) {
         this.monitor = monitor; }
 
     @Override

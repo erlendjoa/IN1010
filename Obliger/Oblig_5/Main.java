@@ -14,13 +14,13 @@ public class Main implements GlobalConstant{
 
     public void kjor() {
 
-        Monitor1 monitor = new Monitor1();
+        Monitor2 monitor = new Monitor2();
         File[] testDataFiler = new File[MAX_ANT_FILER];
         Thread[] traader = new Thread[MAX_ANT_FILER];
         Thread[] fletteTraader = new Thread[MAX_ANT_FLETTETRADER];
 
         for (int i = 0; i < MAX_ANT_FILER; i++) {
-            testDataFiler[i] = new File(path + "/TestData/fil" + (i+1) + ".csv"); }
+            testDataFiler[i] = new File(path + "/TestDataLike/fil" + (i+1) + ".csv"); }
 
         
         // INITIERING (1) AV ALLE FILLESING TRÅDER:
@@ -32,8 +32,7 @@ public class Main implements GlobalConstant{
         for (Thread traad : traader) {
             try {
                 traad.join(); } 
-            catch (InterruptedException e) {
-                System.out.println(e); } }
+            catch (InterruptedException e) {} }
 
         // INITIERING (2) AV ALLE FLETTETRÅDER:
         for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {;
@@ -44,8 +43,7 @@ public class Main implements GlobalConstant{
         for (Thread traad : fletteTraader) {
             try {
                 traad.join(); }
-            catch (InterruptedException e) {
-                System.out.println(e); } }
+            catch (InterruptedException e) {} }
         
         // PRINT HØYEST ANTALL FOREKOMMEDE:
         Subsekvens hoyest = new Subsekvens("", 0);
@@ -55,7 +53,7 @@ public class Main implements GlobalConstant{
                 if (hashMap.get(sekvens).hentAntall() > hoyest.hentAntall()) {
                     hoyest = hashMap.get(sekvens); } } }
 
-        System.out.println("= Subsekvens med hoyest antall i /TestData: " + hoyest);
+        System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + hoyest);
         System.out.println("=== Program HLT ===");
     }
 }

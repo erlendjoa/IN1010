@@ -2,12 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.File;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.Condition;
 
 public class Monitor1 implements GlobalConstant{
 
     private final ReentrantLock laas = new ReentrantLock();
-    private final Condition cond = laas.newCondition();
 
     SubsekvensRegister subRegister = new SubsekvensRegister();
     public ArrayList <HashMap<String,Subsekvens> > register = new ArrayList<>();
@@ -28,20 +26,8 @@ public class Monitor1 implements GlobalConstant{
         laas.lock();
         try {
             return SubsekvensRegister.lesFil(fil); }
-
         finally {
             laas.unlock(); }
     }
 
-    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) throws InterruptedException {
-        laas.lock();
-        try {
-            return subRegister.settSammen(prevHashMap, nextHashMap); }
-
-        catch (NullPointerException e) {
-            return null; }
-
-        finally {
-            laas.unlock(); }
-    }
 }

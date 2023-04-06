@@ -2,6 +2,7 @@ public class SaksProdusent implements Runnable{
 
     KnivMonitor knivMonitor;
     SaksMonitor saksMonitor;
+    private Saks nySaks;
 
     public SaksProdusent(KnivMonitor knivMonitor, SaksMonitor saksMonitor) {
         this.knivMonitor = knivMonitor;
@@ -11,12 +12,10 @@ public class SaksProdusent implements Runnable{
     @Override
     public void run() {
         Kniv[] tempKniver = knivMonitor.taUtKniver();
-        while (tempKniver != null) 
-            Saks nySaks = new Saks(tempKniver[0], tempKniver[1]);
+        while (tempKniver != null) {
+            nySaks = new Saks(tempKniver[0], tempKniver[1]);
             saksMonitor.settInnSaks(nySaks);
-            tempKniver = knivMonitor.taUtKniver();
-            
+            tempKniver = knivMonitor.taUtKniver(); 
         }
-        System.out.println(saksMonitor.hentAntSakser());
     }
 }

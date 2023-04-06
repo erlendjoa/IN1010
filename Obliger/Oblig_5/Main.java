@@ -25,10 +25,8 @@ public class Main implements GlobalConstant{
         
         // INITIERING (1) AV ALLE FILLESING TRÅDER:
         for (int i = 0; i < MAX_ANT_FILER; i++) {
-            LeseTrad leseTraad = new LeseTrad(monitor, testDataFiler[i]);
-            Thread traad = new Thread(leseTraad);
-            traader[i] = traad;
-            traad.start(); }
+            traader[i] = new Thread(new LeseTrad(monitor, testDataFiler[i]));
+            traader[i].start(); }
 
         // VENT PÅ FULLFØRING...
         for (Thread traad : traader) {
@@ -38,11 +36,9 @@ public class Main implements GlobalConstant{
                 System.out.println(e); } }
 
         // INITIERING (2) AV ALLE FLETTETRÅDER:
-        for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {
-            FletteTrad fletteTraad = new FletteTrad(monitor);
-            Thread traad = new Thread(fletteTraad);
-            fletteTraader[i] = traad;
-            traad.start(); }
+        for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {;
+            fletteTraader[i] = new Thread(new FletteTrad(monitor));
+            fletteTraader[i].start(); }
         
         // VENT PÅ FULLFØRING...
         for (Thread traad : fletteTraader) {

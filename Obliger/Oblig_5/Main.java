@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.HashMap;
 
-public class Main implements GlobalInt{
+public class Main implements GlobalConstant{
     private final String path;
 
     public Main(String path) {

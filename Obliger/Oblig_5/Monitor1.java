@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
-public class Monitor1 implements GlobalInt{
+public class Monitor1 implements GlobalConstant{
 
     private final ReentrantLock laas = new ReentrantLock();
     private final Condition cond = laas.newCondition();

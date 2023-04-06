@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.HashMap;
 
-public class LeseTrad implements Runnable, GlobalInt {
+public class LeseTrad implements Runnable, GlobalConstant {
 
     Monitor1 monitor;
     File fil;

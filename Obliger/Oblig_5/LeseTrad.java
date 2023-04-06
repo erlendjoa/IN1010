@@ -1,14 +1,14 @@
 import java.io.File;
 import java.util.HashMap;
 
-public class LeseTrad implements Runnable {
+public class LeseTrad implements Runnable, GlobalInt {
 
     Monitor1 monitor;
     File fil;
 
-    public LeseTrad(Monitor1 monitor, String filnavn) {
+    public LeseTrad(Monitor1 monitor, File fil) {
         this.monitor = monitor;
-        fil = new File(filnavn); }
+        this.fil = fil; }
 
     @Override
     public void run() {

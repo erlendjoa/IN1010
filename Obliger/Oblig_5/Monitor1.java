@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
-public class Monitor1 {
+public class Monitor1 implements GlobalInt{
 
     public ArrayList <HashMap<String,Subsekvens> > register = new ArrayList<>();
     private final ReentrantLock laas = new ReentrantLock();
@@ -15,7 +15,11 @@ public class Monitor1 {
 
     
     public void settInn(HashMap<String,Subsekvens> hashMap) {
-        register.add(hashMap); }
+        laas.lock();
+        try {
+            register.add(hashMap); }
+        finally {
+            laas.unlock(); } }
 
     public int hentAnt() {
         return register.size(); }   
@@ -45,13 +49,18 @@ public class Monitor1 {
             return null; }
         
         finally {
-            laas.unlock(); }
+            laas.unlock();
+            if (register.size() == MAX_ANT_FILER) {
+                cond1.signalAll(); } }
     }
 
     
-    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) {
+    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) throws InterruptedException {
         laas.lock();
         try {
+            if (register.size() < MAX_ANT_FILER) {  // kanskje while lokke
+                cond1.await(); }
+
             for (String nKey : nextHashMap.keySet()) {
                 if (prevHashMap.containsKey(nKey)) {
                     int antall = prevHashMap.get(nKey).hentAntall() + nextHashMap.get(nKey).hentAntall();

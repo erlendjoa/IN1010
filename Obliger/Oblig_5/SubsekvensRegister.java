@@ -49,27 +49,16 @@ public class SubsekvensRegister {
             return hashMap; }
 
         catch (FileNotFoundException e) {
+            System.out.println("Fant ikke fil.");
             return null; } }
 
         
-    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
-        HashMap <String,Subsekvens> nyHashMap = new HashMap<>();
-        
-        for (String key1 : hM1.keySet()) {  //legg til og hvis mulig kombiner sekvenser.
-            for (String key2 : hM2.keySet()) {
-                if (key1 == key2) {
-                    int antall = hM1.get(key1).hentAntall() + hM2.get(key2).hentAntall();
-                    hM1.get(key1).settAntall(antall); }
-                if (!hM1.containsKey(key2) || !nyHashMap.containsKey(key2)) {
-                    nyHashMap.put(key2, hM2.get(key2)); } 
-            }
-            nyHashMap.put(key1, hM1.get(key1));
-        }
-        
-        /*
-        for (String key2 : hM2.keySet()) {  //legg til resterende sekvenser.
-            if (!nyHashMap.containsKey(key2)) {
-                nyHashMap.put(key2, hM2.get(key2)); } }
-        */
-        return nyHashMap; }
+    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> prevHashMap, HashMap<String,Subsekvens> nextHashMap) {
+        for (String nKey : nextHashMap.keySet()) {
+            if (prevHashMap.containsKey(nKey)) {
+                int antall = prevHashMap.get(nKey).hentAntall() + 1;
+                prevHashMap.get(nKey).settAntall(antall);
+            } else {
+                prevHashMap.put(nKey, nextHashMap.get(nKey)); } }
+        return prevHashMap; }
 }

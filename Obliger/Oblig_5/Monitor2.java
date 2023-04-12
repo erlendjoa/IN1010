@@ -17,7 +17,8 @@ public class Monitor2 implements GlobalConstant{
         try {
             monitorRegister.add(hashMap); }
         finally {
-            laas.unlock(); } }
+            laas.unlock(); } 
+    }
 
     public HashMap<String,Subsekvens> fjern(int i) {
         laas.lock();

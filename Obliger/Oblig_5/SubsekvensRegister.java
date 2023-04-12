@@ -23,6 +23,7 @@ public class SubsekvensRegister {
 
 
     public static HashMap <String,Subsekvens> lesFil(File fil) {
+        System.out.println(fil);
         try {
             Scanner scanner = new Scanner(fil);
             HashMap <String,Subsekvens> hashMap = new HashMap<>();
@@ -42,7 +43,7 @@ public class SubsekvensRegister {
             return hashMap; }
 
         catch (FileNotFoundException e) {
-            System.out.println("Fant ikke fil.");
+            System.out.println("FANT IKKE: " + fil);
             return null; } }
 
     

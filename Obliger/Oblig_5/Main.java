@@ -33,7 +33,7 @@ public class Main implements GlobalConstant{
                 traad.join(); } 
             catch (InterruptedException e) {} }
 
-        System.out.println("Register size() = " + monitor.monitorRegister.size());    //Skal være 9
+        System.out.println("Register size() = " + monitor.subRegister.hentAnt());    //Skal være 9
 
 
         // INITIERING (2) AV ALLE FLETTETRÅDER:

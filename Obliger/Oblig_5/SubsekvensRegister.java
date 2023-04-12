@@ -11,7 +11,10 @@ public class SubsekvensRegister {
 
     public void settInn(HashMap<String,Subsekvens> hashMap) {
         register.add(hashMap); }
-
+    
+    public HashMap<String,Subsekvens> taUt() {
+        return register.remove(0); }
+        
     public int hentAnt() {
         return register.size(); }
 
@@ -40,12 +43,12 @@ public class SubsekvensRegister {
             return null; } }
 
     
-    public HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
+    public static HashMap <String,Subsekvens> settSammen(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
         for (String sekvens : hM2.keySet()) {
             if (hM1.containsKey(sekvens)) {
                 int antall = hM1.get(sekvens).hentAntall() + hM2.get(sekvens).hentAntall();
                 hM1.get(sekvens).settAntall(antall);
             } else {
                 hM1.put(sekvens, hM2.get(sekvens)); } }
-        return hM1;  }
+        return hM1; }
 }

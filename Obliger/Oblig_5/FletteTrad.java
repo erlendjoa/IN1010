@@ -9,15 +9,16 @@ public class FletteTrad implements Runnable {
 
     @Override
     public void run() {
-        while (monitor.monitorRegister.size() >= 2) {
+        while (monitor.subRegister.hentAnt() >= 2) {
             try {
-                HashMap<String,Subsekvens> hM1 = monitor.fjern(0);
-                HashMap<String,Subsekvens> hM2 = monitor.fjern(0); 
-                monitor.settSammen(hM1, hM2); }
+                HashMap<String,Subsekvens> hM1 = monitor.fjern();
+                HashMap<String,Subsekvens> hM2 = monitor.fjern(); 
+                HashMap<String,Subsekvens> flettetHM = monitor.taUtTo(hM1, hM2); 
+                monitor.settInn(flettetHM); }
 
             catch (InterruptedException | IndexOutOfBoundsException e) {
                 System.out.println("= CACHED = " + e);
-            } 
+            }
         } 
     }
 }

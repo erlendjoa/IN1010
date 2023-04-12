@@ -23,7 +23,6 @@ public class SubsekvensRegister {
 
 
     public static HashMap <String,Subsekvens> lesFil(File fil) {
-        System.out.println(fil);
         try {
             Scanner scanner = new Scanner(fil);
             HashMap <String,Subsekvens> hashMap = new HashMap<>();
@@ -43,7 +42,6 @@ public class SubsekvensRegister {
             return hashMap; }
 
         catch (FileNotFoundException e) {
-            System.out.println("FANT IKKE: " + fil);
             return null; } }
 
     
@@ -55,4 +53,21 @@ public class SubsekvensRegister {
             } else {
                 hM1.put(sekvens, hM2.get(sekvens)); } }
         return hM1; }
+
+    public static HashMap <String,Subsekvens> finnDominante(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
+        HashMap <String,Subsekvens> nyHashMap = new HashMap<>();
+        int differanse = 2;
+
+        for (String sekvens : hM2.keySet()) {
+            if (hM1.containsKey(sekvens)) {
+                if (hM2.get(sekvens).hentAntall() - differanse > hM1.get(sekvens).hentAntall()) {
+                    nyHashMap.put(sekvens, hM2.get(sekvens)); 
+                }
+            }
+            if (hM1.get(sekvens).hentAntall() - differanse > hM2.get(sekvens).hentAntall()) {
+                nyHashMap.put(sekvens, hM1.get(sekvens));
+            }
+        }
+        return nyHashMap;
+    }
 }

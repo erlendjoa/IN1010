@@ -29,7 +29,6 @@ public class Oblig5Hele implements GlobalConstant {
             scanner.close();
         } catch (FileNotFoundException | NullPointerException e) {};
         
-        
         for (Thread traad : leseArr) {
             try {
                 traad.join();
@@ -56,7 +55,9 @@ public class Oblig5Hele implements GlobalConstant {
             catch (InterruptedException e) {} 
         }
         
-        System.out.println("= Subsekvens med hoyest antall med sykdom: " + monitorUtenSykdom.hentHoyest());
-        System.out.println("= Subsekvens med hoyest antall uten sykdom: " + monitorMedSykdom.hentHoyest());
+        //System.out.println("= Subsekvens med hoyest antall med sykdom: " + monitorUtenSykdom.hentHoyest());
+        //System.out.println("= Subsekvens med hoyest antall uten sykdom: " + monitorMedSykdom.hentHoyest());
+
+        System.out.println(SubsekvensRegister.finnDominante(monitorMedSykdom.subRegister.register.get(0), monitorUtenSykdom.subRegister.register.get(0)));
     }
 }

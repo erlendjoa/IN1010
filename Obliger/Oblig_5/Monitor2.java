@@ -1,12 +1,11 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.io.File;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
 public class Monitor2 implements GlobalConstant{
     private final ReentrantLock laas = new ReentrantLock();
-    private final Condition cond = laas.newCondition();
+    private final Condition ikkeTom = laas.newCondition();
 
     public SubsekvensRegister subRegister = new SubsekvensRegister();
 
@@ -14,7 +13,8 @@ public class Monitor2 implements GlobalConstant{
     public void settInn(HashMap<String,Subsekvens> hashMap) {
         laas.lock();
         try {
-            subRegister.settInn(hashMap); }
+            subRegister.settInn(hashMap); 
+            ikkeTom.signalAll(); }
         finally {
             laas.unlock(); } 
     }
@@ -22,6 +22,8 @@ public class Monitor2 implements GlobalConstant{
     public HashMap<String,Subsekvens> fjern() throws InterruptedException {
         laas.lock();
         try {
+            while (subRegister.hentAnt() < 1) {
+                ikkeTom.await(); }
             return subRegister.taUt(); }
         finally {
             laas.unlock(); }
@@ -36,14 +38,6 @@ public class Monitor2 implements GlobalConstant{
         try {
             return SubsekvensRegister.lesFil(fil); }
         finally {
-            laas.unlock(); }
-    }
-
-    public HashMap<String,Subsekvens> taUtTo(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
-        laas.lock();
-        try {
-            return SubsekvensRegister.settSammen(hM1, hM2);
-        } finally {
             laas.unlock(); }
     }
 

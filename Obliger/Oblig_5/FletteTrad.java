@@ -13,7 +13,7 @@ public class FletteTrad implements Runnable {
             try {
                 HashMap<String,Subsekvens> hM1 = monitor.fjern();
                 HashMap<String,Subsekvens> hM2 = monitor.fjern(); 
-                HashMap<String,Subsekvens> flettetHM = monitor.taUtTo(hM1, hM2); 
+                HashMap<String,Subsekvens> flettetHM = SubsekvensRegister.settSammen(hM1, hM2); 
                 monitor.settInn(flettetHM); }
 
             catch (InterruptedException | IndexOutOfBoundsException e) {

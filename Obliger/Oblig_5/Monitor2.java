@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
-public class Monitor2 implements GlobalConstant{
+public class Monitor2 {
     private final ReentrantLock laas = new ReentrantLock();
     public final Condition cond = laas.newCondition();
 

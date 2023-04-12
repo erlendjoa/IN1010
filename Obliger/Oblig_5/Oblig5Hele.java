@@ -1,46 +1,49 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Oblig5Hele implements GlobalConstant {
 
-    String path;
-
-    public Oblig5Hele(String path) {
-        this.path = path; }
-    
     public static void main(String[] args) {
-        Oblig5Hele main = new Oblig5Hele("TestMappe");
-        main.kjor(); }
-
-    public void kjor() {
+        
         Monitor2 monitorMedSykdom = new Monitor2();
         Monitor2 monitorUtenSykdom = new Monitor2();
 
-        File[] testDataLike = new File[MAX_ANT_FILER];
         File[] testData = new File[MAX_ANT_FILER];
-        Thread[] traaderLike = new Thread[MAX_ANT_FILER];
         Thread[] traader = new Thread[MAX_ANT_FILER];
-        Thread[] fletteTraaderLike = new Thread[MAX_ANT_FLETTETRADER];
-        Thread[] fletteTraader = new Thread[MAX_ANT_FLETTETRADER];
 
-        for (int i = 0; i < MAX_ANT_FILER; i++) {
-            testDataLike[i] = new File(path + "/TestData/fil" + (i+1) + ".csv"); 
-            testData[i] = new File(path + "/TestData/fil" + (i+1) + ".csv"); }
+        ArrayList<Thread> listArr = new ArrayList<>();
 
+        try {
+            File fil = new File(args[0]);
+            Scanner scanner = new Scanner(fil + "/metadata.csv");
+            while (scanner.hasNext()) {
+                String[] list = scanner.nextLine().split(",");
+
+                if (list[1].equals("True")) {
+                    File nyFil = new File(list[0]);
+                    Thread traad = new Thread(new LeseTrad(monitorMedSykdom, nyFil));
+                    listArr.add(traad);
+                    traad.start();
+                } else {
+                    File nyFil = new File(list[0]);
+                    Thread traad = new Thread(new LeseTrad(monitorUtenSykdom, nyFil)); 
+                    listArr.add(traad);
+                    traad.start(); 
+                }
+            } 
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Fant ikke fil.");
+        }
         
-        // INITIERING (1) AV ALLE FILLESING TRÅDER:
-        for (int i = 0; i < MAX_ANT_FILER; i++) {
-            traaderLike[i] = new Thread(new LeseTrad(monitorUtenSykdom, testDataLike[i]));
-            traader[i] = new Thread(new LeseTrad(monitorMedSykdom, testData[i]));
-            traaderLike[i].start();
-            traader[i].start(); }
+        for (Thread traad : listArr) {
+            traad.join();
+        }
 
-        // VENT PÅ FULLFØRING...
-        for (int i = 0; i < MAX_ANT_FILER; i++) {
-            try {
-                traaderLike[i].join(); 
-                traader[i].join(); } 
-            catch (InterruptedException e) {} }
-
+        Thread[] fletteTraaderLike = new Thread[]
+        
         
         // INITIERING (2) AV ALLE FLETTETRÅDER:
         for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {;
@@ -60,4 +63,3 @@ public class Oblig5Hele implements GlobalConstant {
         System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + monitorMedSykdom.hentHoyest());
     }
 }
-

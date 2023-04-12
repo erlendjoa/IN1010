@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.io.File;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Monitor1 implements GlobalConstant{
+public class Monitor1 {
 
     private final ReentrantLock laas = new ReentrantLock();
 

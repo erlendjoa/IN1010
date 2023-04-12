@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class FletteTrad implements Runnable {
     
@@ -11,9 +12,10 @@ public class FletteTrad implements Runnable {
     public void run() {
         while (monitor.subRegister.hentAnt() >= 2) {
             try {
-                HashMap<String,Subsekvens> hM1 = monitor.fjern();
-                HashMap<String,Subsekvens> hM2 = monitor.fjern(); 
-                HashMap<String,Subsekvens> flettetHM = SubsekvensRegister.settSammen(hM1, hM2); 
+                while (monitor.subRegister.hentAnt() < 2) {
+                    monitor.cond.await(); }
+                ArrayList<HashMap<String,Subsekvens>> hashMapArr = monitor.hentTo();
+                HashMap<String,Subsekvens> flettetHM = SubsekvensRegister.settSammen(hashMapArr.get(0), hashMapArr.get(1)); 
                 monitor.settInn(flettetHM); }
 
             catch (InterruptedException | IndexOutOfBoundsException e) {

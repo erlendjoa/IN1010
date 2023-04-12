@@ -1,11 +1,12 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.io.File;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
 public class Monitor2 implements GlobalConstant{
     private final ReentrantLock laas = new ReentrantLock();
-    private final Condition ikkeTom = laas.newCondition();
+    public final Condition cond = laas.newCondition();
 
     public SubsekvensRegister subRegister = new SubsekvensRegister();
 
@@ -14,17 +15,15 @@ public class Monitor2 implements GlobalConstant{
         laas.lock();
         try {
             subRegister.settInn(hashMap); 
-            ikkeTom.signalAll(); }
+            cond.signalAll(); }
         finally {
             laas.unlock(); } 
     }
 
-    public HashMap<String,Subsekvens> fjern() throws InterruptedException {
+    public ArrayList<HashMap<String,Subsekvens>> hentTo() {
         laas.lock();
-        try {
-            while (subRegister.hentAnt() < 1) {
-                ikkeTom.await(); }
-            return subRegister.taUt(); }
+        try {  
+            return subRegister.taUtTo(); }
         finally {
             laas.unlock(); }
     }
@@ -34,16 +33,9 @@ public class Monitor2 implements GlobalConstant{
 
     
     public HashMap<String,Subsekvens> lesFil(File fil) {
-        laas.lock();
-        try {
             return SubsekvensRegister.lesFil(fil); }
-        finally {
-            laas.unlock(); }
-    }
 
-    public Subsekvens hentHoyest() {
-        System.out.println("Register size() etter merge: " + subRegister.hentAnt());
-        
+    public Subsekvens hentHoyest() {        
         Subsekvens hoyest = new Subsekvens("", 0);
         HashMap<String,Subsekvens> hashMap = subRegister.register.get(0);
 

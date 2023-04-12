@@ -33,9 +33,6 @@ public class Main implements GlobalConstant{
                 traad.join(); } 
             catch (InterruptedException e) {} }
 
-        System.out.println("Register size() = " + monitor.subRegister.hentAnt());    //Skal være 9
-
-
         // INITIERING (2) AV ALLE FLETTETRÅDER:
         for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {;
             fletteTraader[i] = new Thread(new FletteTrad(monitor));
@@ -48,7 +45,5 @@ public class Main implements GlobalConstant{
             catch (InterruptedException e) {} }
             
 
-        System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + monitor.hentHoyest());
-        System.out.println("=== Program HLT ===");
-    }
+        System.out.println("= Subsekvens med hoyest antall i TestDataLike: " + monitor.hentHoyest());    }
 }

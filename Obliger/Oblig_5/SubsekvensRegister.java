@@ -12,9 +12,12 @@ public class SubsekvensRegister {
     public void settInn(HashMap<String,Subsekvens> hashMap) {
         register.add(hashMap); }
     
-    public HashMap<String,Subsekvens> taUt() {
-        return register.remove(0); }
-        
+    public ArrayList<HashMap<String,Subsekvens>> taUtTo() {
+        ArrayList<HashMap<String,Subsekvens>> listeMedTo = new ArrayList<>();
+        listeMedTo.add(register.remove(0));
+        listeMedTo.add(register.remove(0));
+        return listeMedTo; }
+
     public int hentAnt() {
         return register.size(); }
 

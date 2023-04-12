@@ -22,7 +22,7 @@ public class Monitor2 implements GlobalConstant{
 
     public ArrayList<HashMap<String,Subsekvens>> hentTo() {
         laas.lock();
-        try {  
+        try { 
             return subRegister.taUtTo(); }
         finally {
             laas.unlock(); }

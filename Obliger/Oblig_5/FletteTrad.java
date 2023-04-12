@@ -17,10 +17,8 @@ public class FletteTrad implements Runnable {
                 ArrayList<HashMap<String,Subsekvens>> hashMapArr = monitor.hentTo();
                 HashMap<String,Subsekvens> flettetHM = SubsekvensRegister.settSammen(hashMapArr.get(0), hashMapArr.get(1)); 
                 monitor.settInn(flettetHM); }
-
             catch (InterruptedException | IndexOutOfBoundsException e) {
-                System.out.println("= CACHED = " + e);
-            }
+                System.out.println("= CACHED = " + e); }
         } 
     }
 }

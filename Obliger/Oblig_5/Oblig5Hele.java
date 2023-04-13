@@ -36,7 +36,6 @@ public class Oblig5Hele implements GlobalConstant {
             catch (InterruptedException e) {}
         }
 
-        System.out.println("=== ant HashMap med sykdom: " + monitorMedSykdom.subRegister.register.size() + "  ===  ant HashMap uten sykdom " + monitorUtenSykdom.subRegister.register.size());
 
         ArrayList<Thread> fletteArr = new ArrayList<>();
         for (int i = 0; i < MAX_ANT_FLETTETRADER; i++) {
@@ -54,8 +53,6 @@ public class Oblig5Hele implements GlobalConstant {
             }
             catch (InterruptedException e) {} 
         }
-
-        System.out.println("=== ant HashMap med sykdom: " + monitorMedSykdom.subRegister.register.size() + "  ===  ant HashMap uten sykdom " + monitorUtenSykdom.subRegister.register.size());
 
         SubsekvensRegister.finnDominante(monitorMedSykdom.subRegister.register.get(0), monitorUtenSykdom.subRegister.register.get(0));
     }

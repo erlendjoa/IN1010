@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 
 public class Monitor2 {
     private final ReentrantLock laas = new ReentrantLock();
-    public final Condition cond = laas.newCondition();
+    private final Condition cond = laas.newCondition();
 
     public SubsekvensRegister subRegister = new SubsekvensRegister();
 

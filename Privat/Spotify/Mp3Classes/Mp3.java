@@ -1,6 +1,6 @@
 
 
-public class Mp3 {
+public abstract class Mp3 {
 
     private final String title;
     private final Artist artist;

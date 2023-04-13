@@ -1,6 +1,7 @@
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-
-public class NodeList<E> implements List<E>{
+public class NodeList<E> implements List<E>, Iterable<E> {
     Node head;
 
     private class Node {
@@ -55,10 +56,54 @@ public class NodeList<E> implements List<E>{
     public int size() {
         int counter = 1;
         Node tempNode = head;
+        if (tempNode == null) {
+            return 0; }
         while (tempNode.next != null) {
             counter++;
             tempNode = tempNode.next;
         }
         return counter;
+    }
+
+    public boolean contains(E parameterElement) {
+        for (E currentElement : this) {
+            if (currentElement == parameterElement) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public Iterator<E> iterator() {
+        return new NodeIterator<E>(this);
+    }
+
+    private class NodeIterator<E> implements Iterator<E> {
+
+        NodeList<E> nodeList;
+        int counter;
+
+        public NodeIterator(NodeList<E> nodeList) {
+            this.nodeList = nodeList;
+            counter = -1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (nodeList.get(counter) != null) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public E next() {
+            counter++;
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return nodeList.get(counter);
+        }
     }
 }

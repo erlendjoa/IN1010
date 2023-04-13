@@ -3,10 +3,17 @@
 public abstract class User {
     
     public String username;
-    private String password;
+    protected String password;
+    private final int id;
 
-    protected void setinfo(String newUsername, String newPassword) {
-        username = newUsername;
-        password = newPassword;
+    NodeList<Mp3> favourites;
+    NodeList<Mp3> discoverWeekly;
+    NodeList<Playlist> playlists;
+
+    public User(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
+
 }

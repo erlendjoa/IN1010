@@ -11,9 +11,11 @@ public abstract class Artist implements GlobalConstants {
     private NodeList<Album> singlesAndEps;
     private NodeList<Album> compilations;
 
+    private NodeList<Playlist> featuringThis;
+
     // TODO: make these relevant:
     private NodeList<Artist> similarArtists;    // list of similar artists.
-    private NodeList<NodeList<Mp3>> featuringThis;  // playlists where artist is featured.
+    
 
     public Artist(String name) {
         this.name = name;

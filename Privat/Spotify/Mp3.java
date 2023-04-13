@@ -10,7 +10,6 @@ public class Mp3 {
         this.title = title;
         this.duration = duration;
         this.artist = artist;
-        artist.getTracks().add(this);
     }
 
     public String getTitle() {

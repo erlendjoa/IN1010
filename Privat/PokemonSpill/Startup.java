@@ -6,7 +6,7 @@ public class Startup {
     
     public static ArrayList<Pokemon> lagPokemons() {
         ArrayList<Pokemon> pokemonList = new ArrayList<>();
-        final File file = new File("listOfPokemon.csv");
+        private final File file = new File("listOfPokemon.csv");
 
         try {
             Scanner scanner = new Scanner(file);

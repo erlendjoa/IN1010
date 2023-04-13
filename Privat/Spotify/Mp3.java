@@ -6,10 +6,11 @@ public class Mp3 {
     private final Artist artist;
     private final int duration;
 
-    public Mp3(NodeList content) {
-        title = content.get(0);
-        artist = content.get(1);
-        duration = content.get(2);
+    public Mp3(String title, Artist artist, int duration) {
+        this.title = title;
+        this.duration = duration;
+        this.artist = artist;
+        artist.getTracks().add(this);
     }
 
     public String getTitle() {

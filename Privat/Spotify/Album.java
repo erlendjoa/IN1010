@@ -1,13 +1,15 @@
 
 
 public abstract class Album {
+    protected NodeList<Mp3> tracks;
 
-    Mp3 mp3;
-    String title;
-    String year;
+    private String type;
+    private String title;
+    private int year;
 
-    public Album(Mp3 mp3) {
-        this.mp3 = mp3;
-        this.title = mp3.getTitle();
+    public Album(String type, String title, int year) {
+        this.type = type;
+        this.title = title;
+        this.year = year;
     }
 }

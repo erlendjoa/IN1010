@@ -43,7 +43,7 @@ public class Oblig5Hele implements GlobalConstant {
             Thread traadM = new Thread(new FletteTrad(monitorMedSykdom));
             Thread traadU = new Thread(new FletteTrad(monitorUtenSykdom));
             fletteArr.add(traadM);
-            fletteArr.add(traadM);
+            fletteArr.add(traadU);
             traadM.start();
             traadU.start();
         }
@@ -54,10 +54,9 @@ public class Oblig5Hele implements GlobalConstant {
             }
             catch (InterruptedException e) {} 
         }
-        
-        //System.out.println("= Subsekvens med hoyest antall med sykdom: " + monitorUtenSykdom.hentHoyest());
-        //System.out.println("= Subsekvens med hoyest antall uten sykdom: " + monitorMedSykdom.hentHoyest());
 
-        System.out.println(SubsekvensRegister.finnDominante(monitorMedSykdom.subRegister.register.get(0), monitorUtenSykdom.subRegister.register.get(0)));
+        System.out.println("=== ant HashMap med sykdom: " + monitorMedSykdom.subRegister.register.size() + "  ===  ant HashMap uten sykdom " + monitorUtenSykdom.subRegister.register.size());
+
+        SubsekvensRegister.finnDominante(monitorMedSykdom.subRegister.register.get(0), monitorUtenSykdom.subRegister.register.get(0));
     }
 }

@@ -54,20 +54,22 @@ public class SubsekvensRegister {
                 hM1.put(sekvens, hM2.get(sekvens)); } }
         return hM1; }
 
-    public static HashMap <String,Subsekvens> finnDominante(HashMap<String,Subsekvens> hM1, HashMap<String,Subsekvens> hM2) {
-        HashMap <String,Subsekvens> nyHashMap = new HashMap<>();
-        int differanse = 2;
 
-        for (String sekvens : hM2.keySet()) {
-            if (hM1.containsKey(sekvens)) {
-                if (hM2.get(sekvens).hentAntall() - differanse > hM1.get(sekvens).hentAntall()) {
-                    nyHashMap.put(sekvens, hM2.get(sekvens)); 
+    public static void finnDominante(HashMap<String,Subsekvens> medSyke, HashMap<String,Subsekvens> utenSyke) {
+        HashMap <String,Subsekvens> nyHashMap = new HashMap<>();
+
+        for (String sekvens : medSyke.keySet()) {
+            if (utenSyke.containsKey(sekvens)) {
+                int differanse = medSyke.get(sekvens).hentAntall() - utenSyke.get(sekvens).hentAntall();
+                if (differanse >= 7) {
+                    nyHashMap.put(sekvens, medSyke.get(sekvens)); 
+                }
+            } else {
+                if (medSyke.get(sekvens).hentAntall() >= 7) {
+                    nyHashMap.put(sekvens, medSyke.get(sekvens)); 
                 }
             }
-            if (hM1.get(sekvens).hentAntall() - differanse > hM2.get(sekvens).hentAntall()) {
-                nyHashMap.put(sekvens, hM1.get(sekvens));
-            }
         }
-        return nyHashMap;
+        System.out.println(nyHashMap);
     }
 }

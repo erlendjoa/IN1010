@@ -20,12 +20,18 @@ public class Monitor2 {
             laas.unlock(); } 
     }
 
-    public ArrayList<HashMap<String,Subsekvens>> hentTo() {
+    public ArrayList<HashMap<String,Subsekvens>> hentTo() throws InterruptedException {
         laas.lock();
         try { 
-            return subRegister.taUtTo(); }
+            if (subRegister.hentAnt() >= 2) {
+                return subRegister.taUtTo(); 
+            } else {
+                cond.await(); 
+            }
+        }
         finally {
             laas.unlock(); }
+        return null;
     }
 
     public int hentAnt() {

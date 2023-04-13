@@ -7,9 +7,11 @@ public class Main implements GlobalConstant{
         this.path = path; }
     
     public static void main (String[] args) {
-        Main main = new Main("TestMappe");
-        main.kjor(); }
-
+        for (int i = 0; i < 1000; i++) {
+            Main main = new Main("TestMappe");
+            main.kjor();
+        }
+    }
 
     public void kjor() {
 

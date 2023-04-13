@@ -1,6 +1,6 @@
 
 
-public abstract class Artist implements GlobalConstants {
+public abstract class Artist {
     
     private final String name;
 
@@ -11,7 +11,8 @@ public abstract class Artist implements GlobalConstants {
     private NodeList<Album> singlesAndEps;
     private NodeList<Album> compilations;
 
-    private NodeList<Playlist> featuringThis;
+    protected NodeList<Playlist> featuringThis;
+    protected NodeList<User> monthlyListeners;
 
     // TODO: make these relevant:
     private NodeList<Artist> similarArtists;    // list of similar artists.

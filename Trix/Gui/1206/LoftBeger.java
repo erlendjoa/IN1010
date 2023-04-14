@@ -13,10 +13,14 @@ public class LoftBeger implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (harBall) {
-            resultatLabel.setText("OK");
-        } else {
-            resultatLabel.setText("NEI"); 
+        if (resultatLabel.getText() == "???") {
+            if (harBall) {
+                resultatLabel.setText("OK");
+                resultatLabel.setForeground(Color.GREEN);
+            } else {
+                resultatLabel.setText("NEI"); 
+                resultatLabel.setForeground(Color.RED);
+            }
         }
     }
 }

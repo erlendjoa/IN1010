@@ -2,17 +2,19 @@
 
 public abstract class User {
     
-    public String username;
+    protected String username;
     protected String password;
     private final int id;
+    private static int idCounter = 0;
 
     NodeList<Mp3> favourites;
     NodeList<Mp3> discoverWeekly;
     NodeList<Playlist> playlists;
 
-    public User(int id, String username, String password) {
-        this.id = id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
+        id = idCounter;
+        idCounter++;
     }
 }

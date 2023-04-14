@@ -2,7 +2,7 @@
 
 public class FreeUser extends User {
     
-    public FreeUser(int id, String username, String password) {
-        super(id, username, username);
+    public FreeUser(String username, String password) {
+        super(username, username);
     }
 }

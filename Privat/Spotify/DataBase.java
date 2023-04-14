@@ -6,9 +6,9 @@ public class DataBase {
     ReentrantLock lock = new ReentrantLock();
     Condition cond = lock.newCondition();
 
-    NodeList<Mp3> allTracks;
-    NodeList<Artist> allArtists;
-    NodeList<Playlist> allPlaylists;
+    NodeList<Mp3> allTracks = new NodeList<>();
+    NodeList<Artist> allArtists = new NodeList<>();
+    NodeList<Playlist> allPlaylists = new NodeList<>();
 
     public void addMp3(Mp3 mp3) {
         lock.lock();

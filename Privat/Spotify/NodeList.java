@@ -2,11 +2,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class NodeList<E> implements List<E>, Iterable<E> {
-    Node head;
+    Node<E> head;
 
-    private class Node {
-        protected Node next;
-        protected Node prev;
+    private class Node<E> {
+        protected Node<E> next;
+        protected Node<E> prev;
         protected E element;
 
         public Node(E element) {
@@ -15,13 +15,13 @@ public class NodeList<E> implements List<E>, Iterable<E> {
     }
 
     public void add(E e) {
-        Node newNode = new Node(e);
+        Node<E> newNode = new Node<>(e);
 
         if (head == null) {
             head = newNode;
             return; 
         }
-        Node tempNode = head;
+        Node<E> tempNode = head;
         while (tempNode.next != null) {
             tempNode = tempNode.next; 
         }
@@ -30,10 +30,13 @@ public class NodeList<E> implements List<E>, Iterable<E> {
     }
 
     public E get(int index) {
-        if (index >= size()) {
+        if (index > size() || index < 0) {
             return null;
         }
-        Node tempNode = head;
+        if (index == 0) {
+            return head.element;
+        }
+        Node<E> tempNode = head;
         for (int i = 0; i < index; i++) {
             tempNode = tempNode.next;
         }
@@ -41,10 +44,13 @@ public class NodeList<E> implements List<E>, Iterable<E> {
     }
 
     public E remove(int index) {
-        if (index+1 > size()) {
+        if (index > size() || index<0) {
             return null;
         }
-        Node tempNode = head;
+        if (size() == 0) {
+            return null;
+        }
+        Node<E> tempNode = head;
         for (int i = 0; i < index; i++) {
             tempNode = tempNode.next;
         }
@@ -55,15 +61,16 @@ public class NodeList<E> implements List<E>, Iterable<E> {
 
     public int size() {
         int currentCounter = 0;
-        Node tempNode = head;
+        Node<E> tempNode = head;
         if (tempNode == null) {
             return 0; }
-        if (tempNode.next == null) {
+        if (head.next == null) {
             return 1; }
         while (tempNode.next != null) {
             currentCounter++;
             tempNode = tempNode.next;
         }
+        currentCounter++;
         return currentCounter;
     }
 

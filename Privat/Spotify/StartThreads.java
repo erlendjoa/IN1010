@@ -12,11 +12,14 @@ public class StartThreads {
         new File("Csv/IGOR.csv"), new File("Csv/Norman Fucking Rockwell!.csv"),
         new File("Csv/Random.csv") };
 
+        /*
         for (int i = 1; i < 6; i++) {
             Thread readingThread = new Thread(new ReadingThread(dataBase, files[i]));
             threads[i] = readingThread;
             threads[i].start();
-        } 
+        }  */
         
+        Thread testThread = new Thread(new ReadingThread(dataBase, files[0]));
+        testThread.start();
     }
 }

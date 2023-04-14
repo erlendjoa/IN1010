@@ -40,7 +40,7 @@ public class Artist {
         // TODO: get max listeners for an album and add to popularTracks.
     }
 
-    protected NodeList<Album> getTracks() {
+    public NodeList<Album> getTracks() {
         return tracks;
     }
 }

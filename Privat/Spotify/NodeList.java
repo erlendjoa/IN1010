@@ -3,7 +3,6 @@ import java.util.NoSuchElementException;
 
 public class NodeList<E> implements List<E>, Iterable<E> {
     Node head;
-    int currentSize = 0;
 
     private class Node {
         protected Node next;
@@ -17,7 +16,6 @@ public class NodeList<E> implements List<E>, Iterable<E> {
 
     public void add(E e) {
         Node newNode = new Node(e);
-        currentSize++;
 
         if (head == null) {
             head = newNode;
@@ -32,45 +30,42 @@ public class NodeList<E> implements List<E>, Iterable<E> {
     }
 
     public E get(int index) {
-        if (index > currentSize) {
+        if (index >= size()) {
             return null;
         }
         Node tempNode = head;
-        for (int i = 1; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             tempNode = tempNode.next;
         }
         return tempNode.element;
     }
 
     public E remove(int index) {
-        if (index > currentSize) {
+        if (index+1 > size()) {
             return null;
         }
         Node tempNode = head;
-        for (int i = 1; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             tempNode = tempNode.next;
         }
         tempNode.prev.next = tempNode.next;
         tempNode.next.prev = tempNode.prev;
-        currentSize--;
         return tempNode.element;
     }
 
-    /* 
     public int size() {
-        int counter = 1;
+        int currentCounter = 0;
         Node tempNode = head;
         if (tempNode == null) {
             return 0; }
         if (tempNode.next == null) {
             return 1; }
         while (tempNode.next != null) {
-            counter++;
+            currentCounter++;
             tempNode = tempNode.next;
         }
-        return counter;
+        return currentCounter;
     }
-    */
 
     public boolean contains(E parameterElement) {
         for (E currentElement : this) {
@@ -98,7 +93,7 @@ public class NodeList<E> implements List<E>, Iterable<E> {
 
         @Override
         public boolean hasNext() {
-            return counter < nodeList.currentSize;
+            return counter < size();
         }
 
         @Override
@@ -106,8 +101,9 @@ public class NodeList<E> implements List<E>, Iterable<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
+            E tempElement = nodeList.get(counter);
             counter++;
-            return nodeList.get(counter);
+            return tempElement;
         }
     }
 }

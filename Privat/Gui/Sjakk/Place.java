@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Place implements ActionListener {
 
-    Piece piece;
+    public Piece piece;
 
     public Place(Piece piece) {
         this.piece = piece;
@@ -12,6 +12,6 @@ public class Place implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
     }
 }

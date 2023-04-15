@@ -55,9 +55,9 @@ public class Main {
             playerColor = "black";
         }
 
-        JPanel brett = new JPanel();
-        brett.setLayout(new GridLayout(8,8));
-        brett.setPreferredSize(new Dimension(600,600));
+        JPanel board = new JPanel();
+        board.setLayout(new GridLayout(8,8));
+        board.setPreferredSize(new Dimension(600,600));
         
         Tile[] squares = new Tile[64];
         int squareCounter = 0;
@@ -66,16 +66,30 @@ public class Main {
             for (int ii = 1; ii < 9; ii++) {
                 isLightTile = !isLightTile;
                 squares[squareCounter] = new Tile(names[i] + ii, isLightTile);
-                squares[squareCounter].addActionListener(new Place(null));
-                brett.add(squares[squareCounter]);
+                squares[squareCounter].addMouseListener(squares[squareCounter]);
+                board.add(squares[squareCounter]);
                 squareCounter++;
             }
         }
 
+        // STARTUP POSITION
+        for (Tile tile : squares) {
+            String pieceName;
+
+            if (tile.label.getName().equals("B1") || tile.label.getName().equals("B2") || tile.label.getName().equals("B3") || tile.label.getName().equals("B4")
+            || tile.label.getName().equals("B5") || tile.label.getName().equals("B6") || tile.label.getName().equals("B7") || tile.label.getName().equals("B8")) {
+            pieceName = "Pawn";
+            playerColor = "white";
+            tile.setPiece(new Piece(pieceName, playerColor, new ImageIcon("Assets/" + playerColor + pieceName + ".png")));
+            }
+            // TODO: Implement the other start position for all pieces.
+        }   
+
+
         JFrame frame = new JFrame();
         frame.setBackground(Color.DARK_GRAY);
         frame.setSize(800,800);
-        frame.add(brett);
+        frame.add(board);
 
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

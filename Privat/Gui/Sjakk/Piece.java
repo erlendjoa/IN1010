@@ -4,9 +4,9 @@ import javax.swing.*;
 
 public class Piece {
     
-    String name;
-    String player;
-    ImageIcon icon;
+    public final String name;
+    public final String player;
+    public final ImageIcon icon;
 
     public Piece(String name, String player, ImageIcon icon) {
         this.name = name;

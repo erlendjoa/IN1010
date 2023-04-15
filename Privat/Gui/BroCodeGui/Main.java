@@ -6,6 +6,8 @@ import javax.swing.border.Border;
 public class Main {
 
     public static void main(String[] args) {
+        try { UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); } 
+        catch (Exception e) {System.exit(1); }
 
         ImageIcon img = new ImageIcon("keroGrips.jpg");
         JLabel label = new JLabel();    
@@ -20,9 +22,17 @@ public class Main {
         label.setIcon(img);
         label.setHorizontalTextPosition(JLabel.CENTER);
         label.setVerticalTextPosition(JLabel.BOTTOM);
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.CENTER);
         label.setIconTextGap(5);
 
+        label.setBounds(20,20,500,500);   // Set x,y,width,height of label in frame
+
         MyFrame myFrame = new MyFrame();
+        myFrame.setLayout(null);
         myFrame.add(label);
+
+        //myFrame.pack();
+        myFrame.setVisible(true);
     }
 }

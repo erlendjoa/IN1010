@@ -12,7 +12,6 @@ public class Place implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.piece = piece;
-        setIcon(piece.icon);
+        
     }
 }

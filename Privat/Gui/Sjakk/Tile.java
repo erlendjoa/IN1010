@@ -23,12 +23,4 @@ public class Tile extends JButton {
             setBackground(color);
         }
     }
-
-    public void placePiece(Piece incomingPiece) {
-        if (piece.player != incomingPiece.player) {
-            
-        }
-        this.piece = piece;
-        setIcon(piece.icon);
-    }
 }

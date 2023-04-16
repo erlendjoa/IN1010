@@ -44,7 +44,7 @@ public class NodeList<E> implements List<E>, Iterable<E> {
     }
 
     public E remove(int index) {
-        if (index > size() || index<0) {
+         if (index > size() || index<0) {
             return null;
         }
         if (size() == 0) {

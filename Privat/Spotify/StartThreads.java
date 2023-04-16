@@ -3,8 +3,7 @@ import java.io.FileNotFoundException;
 
 public class StartThreads {
     
-    public static void main() {
-        DataBase dataBase = new DataBase();
+    public DataBase main(DataBase dataBase) {
 
         Thread[] threads = new Thread[6];
         File[] files = { new File("Csv/1000 gecs.csv"), 
@@ -24,13 +23,17 @@ public class StartThreads {
             }  
         } catch (InterruptedException e) {
         } finally {
-            for (Artist currentArtist_1 : dataBase.allArtists) {
+            /* 
+            for (Artist currentArtist : dataBase.allArtists) {
                 for (int i = 0; i < dataBase.allArtists.size(); i++) {
-                    if (currentArtist_1.getName().equals(dataBase.allArtists.get(i).getName())) {
+                    if (dataBase.allArtists.get(i) != null) {
+                        if (currentArtist.getName().equals(dataBase.allArtists.get(i).getName())) {
                         dataBase.allArtists.remove(i);
+                        }   
                     }
                 }
-            }  
+            } 
+            */ 
         }
         
         //Thread testThread = new Thread(new ReadingThread(dataBase, files[0]));
@@ -39,5 +42,7 @@ public class StartThreads {
         for (Artist artist : dataBase.allArtists) {
             System.out.println(artist.getName());
         }
+
+        return dataBase;
     }
 }

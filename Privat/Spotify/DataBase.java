@@ -67,4 +67,14 @@ public class DataBase {
         return featuredArtists;
     }
 
+    public NodeList<Artist> getArtists() {
+        return allArtists;
+    }
+    public NodeList<Mp3> getMp3s() {
+        return allTracks;
+    }
+    public NodeList<Playlist> getPlaylists() {
+        return allPlaylists;
+    }
+
 }

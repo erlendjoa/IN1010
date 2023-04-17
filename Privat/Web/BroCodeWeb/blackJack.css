@@ -1,0 +1,22 @@
+
+.cardPanel {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.cardsOnBoard {
+    display: inline-block;
+    justify-content: center;
+}
+
+.score {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 5%;
+
+}
+
+
+#cardImage {
+    padding-inline: 10px;
+}

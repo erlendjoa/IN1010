@@ -31,6 +31,8 @@ class Player {
         for (i = 0; i < this.hand.length; i++) {
             if (i < this.hand.length) {
                 this.ids[i].src = this.hand[i].getImage();
+                this.ids[i].style.outline = "2px solid black";
+                this.ids[i].style.display = "block";
                 tempHand.push(this.hand[i]);
                 tempScore += this.hand[i].value;
             } else {
@@ -65,8 +67,9 @@ deck = [];
 typeArr = ["club", "heart", "spade", "diamond"];
 valueArr = [1,2,3,4,5,6,7,8,9,10,10,10,10];
 for (i = 0; i < 4; i++) {
-    for (j = 0; j < 13; j++) {
-        deck.push(new Card("Assets/" + typeArr[i] + j + ".jpg", valueArr[j]));
+    for (j = 1; j < 14; j++) {
+        console.log("Assets/" + typeArr[i] + ".jpg", valueArr[j-1])
+        deck.push(new Card("Assets/" + typeArr[i]+j + ".jpg", valueArr[j-1]));
     }
 }
 
@@ -79,3 +82,11 @@ user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 console.log("Fullført 1");
 dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
+
+// Hide dealers card.
+    dealerIds[0].src = "Assets/cardBack.jpg";
+    dealerIds[1].src = "Assets/cardBack.jpg";
+
+function addCardFromButton() {
+    user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
+}

@@ -9,34 +9,31 @@
 </head>
 <body style="background-color: rgb(74, 116, 74);">
     <div class="cardPanel">
-        <div class="cardsOnBoard">
-            <tr>
-                <img id="cid0" height="50">
-                <img id="cid1" height="50">
-                <img id="cid2" height="50">
-                <img id="cid3" height="50"> 
-                <img id="cid4" height="50">
-                <img id="cid5" height="50">
-                <img id="cid6" height="50">
-                <img id="cid7" height="50"> 
+            <tr class="cardsOnBoard">
+                <img id="cid0" class="card" height="150">
+                <img id="cid1" class="card" height="150">
+                <img id="cid2" class="card" height="150">
+                <img id="cid3" class="card" height="150"> 
+                <img id="cid4" class="card" height="150">
+                <img id="cid5" class="card" height="150">
+                <img id="cid6" class="card" height="150">
+                <img id="cid7" class="card" height="150"> 
             </tr> 
-        </div>
         <h1 class="score" id="dealerScore">0</h1>
     </div>
     <hr>
     <div class="cardPanel">
-        <div class="cardsOnBoard">
-            <tr>
-                <img id="ciu0" height="50">
-                <img id="ciu1" height="50">
-                <img id="ciu2" height="50">
-                <img id="ciu3" height="50"> 
-                <img id="ciu4" height="50">
-                <img id="ciu5" height="50">
-                <img id="ciu6" height="50">
-                <img id="ciu7" height="50"> 
-            </tr> 
-        </div>
+        <tr class="cardsOnBoard">
+            <img id="ciu0" class="card" height="150">
+            <img id="ciu1" class="card" height="150">
+            <img id="ciu2" class="card" height="150">
+            <img id="ciu3" class="card" height="150"> 
+            <img id="ciu4" class="card" height="150">
+            <img id="ciu5" class="card" height="150">
+            <img id="ciu6" class="card" height="150">
+            <img id="ciu7" class="card" height="150"> 
+            <button id="addCardButton" class="card" onclick="addCardFromButton()">+</button>
+        </tr> 
         <h1 class="score" id="playerScore">0</h1>
     </div>
 </body>

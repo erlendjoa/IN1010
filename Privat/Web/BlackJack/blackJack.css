@@ -2,21 +2,39 @@
 .cardPanel {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
     padding-bottom: 50px;
 }
 .cardsOnBoard {
     display: inline-block;
     justify-content: center;
 }
+.card {
+    display: none;
+    margin-right: 15px;
+}
 
 .score {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    padding-left: 5%;
-
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 5vw;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    margin-left: 10px;
 }
 
 
 #cardImage {
     padding-inline: 10px;
+}
+
+#addCardButton {
+    background-color: #3f5b40; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 38px;
+    margin-left: 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 32px;
+    border-radius: 10px;
+    cursor: pointer;
 }

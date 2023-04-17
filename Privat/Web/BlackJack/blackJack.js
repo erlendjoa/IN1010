@@ -23,6 +23,7 @@ class Player {
     addCard(newCard) {
         this.hand.push(newCard);
         this.updateCards();
+        setTimeout(() => {}, 600);
     }
     updateCards() {
         let tempScore = 0;
@@ -34,6 +35,7 @@ class Player {
                 this.ids[i].style.display = "block";
                 tempHand.push(this.hand[i]);
                 tempScore += this.hand[i].value;
+                setTimeout(() => {}, 200); // Add delay of 200ms after displaying each card
             } else {
                 if (this.ids[i].complete) {
                     this.ids[i].removeChild(element.querySelector("img[src='path/to/image.png']"));
@@ -44,6 +46,7 @@ class Player {
         this.score = tempScore;
         this.scoreId.textContent = this.score;
     }
+    
     resetCards() {
         this.hand = [];
         this.score = 0;
@@ -64,7 +67,7 @@ for (i = 0; i < 8; i++) {
 // Create and push new Cards to deck[].
 deck = [];  
 typeArr = ["club", "heart", "spade", "diamond"];
-valueArr = [1,2,3,4,5,6,7,8,9,10,10,10,10];
+valueArr = [11,2,3,4,5,6,7,8,9,10,10,10,10];
 for (i = 0; i < 4; i++) {
     for (j = 1; j < 14; j++) {
         deck.push(new Card("Assets/" + typeArr[i]+j + ".jpg", valueArr[j-1]));
@@ -94,25 +97,61 @@ function lockInn() {
     
     setTimeout(function() {
         dealerIds[0].src = dealer.hand[0].getImage();
-    }, 150);
+    }, 200);
     setTimeout(function() {
         dealerIds[1].src = dealer.hand[1].getImage();
-    }, 300);
+    }, 400);
     setTimeout(function() {
         dealerAddRest();
-    }, 550);
+    }, 600);
+}
+
+function switchAce(player, card, index) {
+    card.value = 1;
+    player.ids[index].style.outline = "2px red";
+    console.log(player + " bytter " + player.ids[index] + " bytter .style.outline = 2px red på index: " + index );
+    player.updateCards();
 }
 
 function dealerAddRest() {
-    if (dealer.score >= user.score) {
-        //WIN CONDITION
+
+    if (user.score == 21) {
+        console.log("dealer wins");
+        return;
+    }
+    if (user.score > 21) {
+        console.log("dealer wins");
+        return;
     }
 
-    while (dealer.score < 17) {
+    if (dealer.hand[0].value == 11 && dealer.hand[1].value == 11) {     // If both are ace at start.
+            switchAce(dealer, dealer.hand[0], 0);
+            dealerAddRest();
+    }  
+
+    if (dealer.score >= user.score) {
+        console.log("dealer wins");
+        return;
+    }
+
+    while (dealer.score < 17 && dealer.score < user.score) {
         dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))])
     }
 
-    if (dealer.score >= user.score) {
-        //WIN CONDITION
+    if (dealer.score < user.score || dealer.score > 21) {
+        for (i = 0; i < dealer.hand.length; i++) {
+            if (dealer.hand[i].value == 11) {
+                switchAce(dealer, dealer.hand[i], i);
+                dealerAddRest();
+            }
+        }   
     }
+    
+
+    if (dealer.score >= user.score && dealer.score < 22) {
+        console.log("dealer wins");
+        return;
+    }
+
+    console.log("user wins");
 }

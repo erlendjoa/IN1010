@@ -11,6 +11,8 @@
 .card {
     display: none;
     margin-right: 15px;
+    border: 1.5px solid black;
+    border-radius: 5px;
 }
 
 .score {
@@ -23,6 +25,7 @@
 
 #cardImage {
     padding-inline: 10px;
+    border: none;
 }
 
 #addCardButton {

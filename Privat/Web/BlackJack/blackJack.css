@@ -2,7 +2,7 @@
 .cardPanel {
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
+    padding-top: 35px;
 }
 .cardsOnBoard {
     display: inline-block;
@@ -15,7 +15,7 @@
 
 .score {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 5vw;
+    font-size: 50px;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     margin-left: 10px;
@@ -37,4 +37,12 @@
     font-size: 32px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+#lockInn {
+    border: none;
+    background: none;
+    font-size: 32px;
+    cursor: pointer;
+    font-size: 100px;
 }

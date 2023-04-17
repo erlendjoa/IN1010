@@ -31,7 +31,7 @@ class Player {
         for (i = 0; i < this.hand.length; i++) {
             if (i < this.hand.length) {
                 this.ids[i].src = this.hand[i].getImage();
-                this.ids[i].style.outline = "2px solid black";
+                this.ids[i].style.border = "3px solid black";
                 this.ids[i].style.display = "block";
                 tempHand.push(this.hand[i]);
                 tempScore += this.hand[i].value;
@@ -83,8 +83,8 @@ dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 
 // Hide dealers card.
-    dealerIds[0].src = "Assets/cardBack.jpg";
-    dealerIds[1].src = "Assets/cardBack.jpg";
+dealerIds[0].src = "Assets/cardBack.jpg";
+dealerIds[1].src = "Assets/cardBack.jpg";
 
 
 
@@ -108,9 +108,23 @@ function lockInn() {
 
 function switchAce(player, card, index) {
     card.value = 1;
-    player.ids[index].style.outline = "2px red";
-    console.log(player + " bytter " + player.ids[index] + " bytter .style.outline = 2px red på index: " + index );
     player.updateCards();
+    player.ids[index].style.border = "3px solid rgb(170, 176, 63)";
+}
+
+function switchAceFromButton(index) {
+    if (user.hand[index].value == 11) {
+        user.hand[index].value = 1;
+        user.updateCards();
+        user.ids[index].style.border = "3px solid rgb(170, 176, 63)";
+        return;
+    } 
+    if (user.hand[index].value == 1) {
+        user.hand[index].value = 11;
+        user.updateCards();
+        user.ids[index].style.border = "3px solid black";
+        return;
+    }
 }
 
 function dealerAddRest() {
@@ -155,3 +169,5 @@ function dealerAddRest() {
 
     console.log("user wins");
 }
+
+dealerScoreId.style.display = "none";

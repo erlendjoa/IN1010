@@ -4,6 +4,15 @@
     justify-content: center;
     padding-top: 35px;
 }
+.underPanel {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 80px;
+    
+}
 .cardsOnBoard {
     display: inline-block;
     justify-content: center;
@@ -11,21 +20,32 @@
 .card {
     display: none;
     margin-right: 15px;
-    border: 1.5px solid black;
+    border: 3px solid black;
     border-radius: 5px;
 }
 
+
 .score {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 50px;
+    font-size: 70px;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    margin-left: 10px;
+    margin-top: 0;
 }
 
 #cardImage {
     padding-inline: 10px;
     border: none;
+}
+
+#coinText {
+    font-size: 30px;
+    margin-top: 0px;
+  }
+#coin {
+    justify-self: flex-start;
+    margin-top: 2px;
+    margin-right: 5px;
 }
 
 #addCardButton {
@@ -46,10 +66,62 @@
     background:#3f5b40;;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 30px;
-    padding: 8px 25px;
-    text-align: center;
-    display: inline-block;
+    padding: 0px 25px;
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    
+
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
+.bettingPanel {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    margin-top: 20px;
+}
+
+.moneyButton {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #3f5b40;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .moneyButton::before, .moneyButton::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 2px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+  }
+  
+  .moneyButton::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  
+  .moneyButton:hover {
+    background-color: #3f5b40;
+  }
+  
+  .moneyButton:focus {
+    outline: none;
+  }
+  
+  .moneyButton:active {
+    transform: scale(0.95);
+  }
+  

@@ -22,7 +22,6 @@ class Player {
     }
     addCard(newCard) {
         this.hand.push(newCard);
-        console.log("Added " + newCard.getImage() + "with a value of " + newCard.value);
         this.updateCards();
     }
     updateCards() {
@@ -68,7 +67,6 @@ typeArr = ["club", "heart", "spade", "diamond"];
 valueArr = [1,2,3,4,5,6,7,8,9,10,10,10,10];
 for (i = 0; i < 4; i++) {
     for (j = 1; j < 14; j++) {
-        console.log("Assets/" + typeArr[i] + ".jpg", valueArr[j-1])
         deck.push(new Card("Assets/" + typeArr[i]+j + ".jpg", valueArr[j-1]));
     }
 }
@@ -77,9 +75,7 @@ for (i = 0; i < 4; i++) {
 user = new Player(userIds, userScoreId);
 dealer = new Player(dealerIds, dealerScoreId);
 user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
-console.log("Fullført 1");
 user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
-console.log("Fullført 1");
 dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
 
@@ -87,6 +83,36 @@ dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
     dealerIds[0].src = "Assets/cardBack.jpg";
     dealerIds[1].src = "Assets/cardBack.jpg";
 
+
+
 function addCardFromButton() {
     user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
+}
+function lockInn() {
+    document.getElementById("lockInn").style.visibility = "hidden";
+    document.getElementById("addCardButton").style.display = "none";
+    
+    setTimeout(function() {
+        dealerIds[0].src = dealer.hand[0].getImage();
+    }, 150);
+    setTimeout(function() {
+        dealerIds[1].src = dealer.hand[1].getImage();
+    }, 300);
+    setTimeout(function() {
+        dealerAddRest();
+    }, 550);
+}
+
+function dealerAddRest() {
+    if (dealer.score >= user.score) {
+        //WIN CONDITION
+    }
+
+    while (dealer.score < 17) {
+        dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))])
+    }
+
+    if (dealer.score >= user.score) {
+        //WIN CONDITION
+    }
 }

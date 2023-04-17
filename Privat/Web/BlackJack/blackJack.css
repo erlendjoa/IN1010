@@ -21,13 +21,12 @@
     margin-left: 10px;
 }
 
-
 #cardImage {
     padding-inline: 10px;
 }
 
 #addCardButton {
-    background-color: #3f5b40; /* Green */
+    background-color: #3f5b40;
     border: none;
     color: white;
     padding: 15px 38px;
@@ -41,8 +40,13 @@
 
 #lockInn {
     border: none;
-    background: none;
-    font-size: 32px;
+    background:#3f5b40;;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    padding: 8px 25px;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 100px;
 }

@@ -23,24 +23,17 @@ class Player {
     addCard(newCard) {
         this.hand.push(newCard);
         this.updateCards();
-        setTimeout(() => {}, 600);
     }
     updateCards() {
         let tempScore = 0;
         let tempHand = [];
         for (i = 0; i < this.hand.length; i++) {
-            if (i < this.hand.length) {
                 this.ids[i].src = this.hand[i].getImage();
                 this.ids[i].style.border = "3px solid black";
                 this.ids[i].style.display = "block";
                 tempHand.push(this.hand[i]);
                 tempScore += this.hand[i].value;
                 setTimeout(() => {}, 200); // Add delay of 200ms after displaying each card
-            } else {
-                if (this.ids[i].complete) {
-                    this.ids[i].removeChild(element.querySelector("img[src='path/to/image.png']"));
-                }
-            }
         }
         this.hand = tempHand;
         this.score = tempScore;
@@ -77,19 +70,26 @@ for (i = 0; i < 4; i++) {
 
 user = new Player(userIds, userScoreId);
 dealer = new Player(dealerIds, dealerScoreId);
-user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
-user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
-dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
-dealer.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
+
+user.addCard(deck.pop(Math.floor(Math.random() * deck.length)));
+user.addCard(deck.pop(Math.floor(Math.random() * deck.length)));
+dealer.addCard(deck.pop(Math.floor(Math.random() * deck.length)));
+dealer.addCard(deck.pop(Math.floor(Math.random() * (deck.length-1 - 0 + 1))));
 
 // Hide dealers card.
 dealerIds[0].src = "Assets/cardBack.jpg";
 dealerIds[1].src = "Assets/cardBack.jpg";
 
 
-
 function addCardFromButton() {
-    user.addCard(deck[Math.floor(Math.random() * (deck.length-1 - 0 + 1))]);
+    let randomIndex = 0;            // RANDOM NOT WORKING
+    let card = 0;
+
+    randomIndex = Math.floor(Math.random() * (deck.length-1 - 0 + 1));
+    card = deck.pop(Math.floor(Math.random() * (deck.length-1 - 0 + 1)));
+    
+    console.log(card);
+    user.addCard(card);
 }
 function lockInn() {
     document.getElementById("lockInn").style.visibility = "hidden";

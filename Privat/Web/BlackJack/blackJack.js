@@ -170,4 +170,3 @@ function dealerAddRest() {
     console.log("user wins");
 }
 
-dealerScoreId.style.display = "none";

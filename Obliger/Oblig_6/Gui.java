@@ -1,22 +1,21 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Gui {
 
-    public static void main(String[] args) {
-        Gui gui = new Gui();
-        gui.startGui(args[0]);
+    public ArrayList<JButton> celleButtonList;
+
+    public Gui() {
+        celleButtonList = new ArrayList<>();
     }
 
     public void startGui(String antallCeller) {
-        System.out.println(Double.parseDouble(antallCeller));
-        System.out.println(Math.sqrt(Double.parseDouble(antallCeller)));
-        System.out.println((int) Math.sqrt(Double.parseDouble(antallCeller)));
-
-        int indexCeller = (int) Math.sqrt(Double.parseDouble(antallCeller));
         try { UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); } 
         catch (Exception e) {System.exit(1); }
+        
+        int indexCeller = (int) Math.sqrt(Double.parseDouble(antallCeller));
 
         // Lag rutenett JPanel
         JPanel rutenettPanel = new JPanel();
@@ -29,16 +28,19 @@ public class Gui {
         // Fyll inn rutenettGrid
         for (int i = 0; i < indexCeller; i++) {
             for (int j = 0; j < indexCeller; j++) {
-                JButton celleButton = new JButton("0");
+                JButton celleButton = new JButton();
                 celleButton.setBackground(Color.BLACK);
                 celleButton.setForeground(Color.BLACK);
+                celleButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                celleButton.setPreferredSize(new Dimension(15, 15));
+
                 rutenettPanel.add(celleButton, i, j);  
+                celleButtonList.add(celleButton);
             }
         }
 
         // Fyll inn i det andre panelet
-        Image img = new ImageIcon("sus.png").getImage().getScaledInstance(40,50, Image.SCALE_SMOOTH);
-        JLabel gameOfLifeLabel = new JLabel("Game of Life!", new ImageIcon(img), 0);
+        JLabel gameOfLifeLabel = new JLabel("Game of Life!");
         otherPanel.setBackground(new Color(50,50,50));
 
         gameOfLifeLabel.setFont(new Font("Comic Sans MS" , Font.BOLD, 24));

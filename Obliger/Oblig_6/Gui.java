@@ -90,5 +90,9 @@ public class Gui {
 
         startButton.addActionListener(new StartSimulasjon(verden, this));
         avsluttButton.addActionListener((new Avslutt(this)));
+        startButton.setBackground(Color.BLACK);
+        avsluttButton.setBackground(Color.BLACK);
+        startButton.setForeground(Color.WHITE);
+        avsluttButton.setForeground(Color.WHITE);
     }
 }

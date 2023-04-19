@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Gui {
 
     public ArrayList<JButton> celleButtonList;
+    public JButton startButton;
+    public JButton avsluttButton;
 
     public Gui() {
         celleButtonList = new ArrayList<>();
@@ -21,6 +23,7 @@ public class Gui {
         JPanel rutenettPanel = new JPanel();
         GridLayout rutenettGrid = new GridLayout(indexCeller, indexCeller);
         rutenettPanel.setLayout(rutenettGrid);
+        rutenettPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         // Lag the andre JPanel
         JPanel otherPanel = new JPanel();
@@ -40,15 +43,20 @@ public class Gui {
         }
 
         // Fyll inn i det andre panelet
-        JLabel gameOfLifeLabel = new JLabel("Game of Life!");
-        otherPanel.setBackground(new Color(50,50,50));
+        JLabel gameOfLifeLabel = new JLabel("GAME OF LIFE");
+        otherPanel.setBackground(Color.BLACK);
+        otherPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        gameOfLifeLabel.setFont(new Font("Comic Sans MS" , Font.BOLD, 24));
+        gameOfLifeLabel.setFont(new Font("Sans Seriff" , Font.BOLD, 24));
         gameOfLifeLabel.setIconTextGap(15);
-        gameOfLifeLabel.setForeground(Color.BLACK);
+        gameOfLifeLabel.setForeground(Color.WHITE);
         //otherPanel.setPreferredSize(new Dimension(0, 100));
+
+        startButton = new JButton("START");
+        avsluttButton = new JButton("AVSLUTT");
+        otherPanel.add(startButton);
         otherPanel.add(gameOfLifeLabel);
-        
+        otherPanel.add(avsluttButton);
         
         // Lag og add elements til JFrame
         JFrame vindu = new JFrame();
@@ -58,10 +66,29 @@ public class Gui {
 
         vindu.pack();
         vindu.setTitle("Game of Life");
-        vindu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vindu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         vindu.setLocationRelativeTo(null);
         vindu.setResizable(true);
         vindu.getContentPane().setBackground(new Color(50,50,50));
         vindu.setVisible(true);
+    }
+
+    public void assignActionListeners(Verden verden) {
+        ArrayList<Celle> alleCeller = new ArrayList<>();
+
+        for (int i = 0; i < verden.rutenett.antRader; i++) {
+            for (int j = 0; j < verden.rutenett.antKolonner; j++) {
+                alleCeller.add(verden.rutenett.rutene[i][j]);
+            }
+        }
+
+        for (int i = 0; i < celleButtonList.size(); i++) {
+            JButton currentButton = celleButtonList.get(i);
+            Celle currentCelle = alleCeller.get(i);
+            currentButton.addActionListener(new EndreStatus(currentCelle, currentButton));
+        }
+
+        startButton.addActionListener(new StartSimulasjon(verden, this));
+        avsluttButton.addActionListener((new Avslutt(this)));
     }
 }

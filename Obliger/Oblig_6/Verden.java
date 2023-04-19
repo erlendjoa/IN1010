@@ -2,12 +2,10 @@ import java.util.ArrayList;
 
 public class Verden {
 
-    private int indexCeller;
-    private Rutenett rutenett;
-    private int genNr;
+    protected Rutenett rutenett;
+    protected int genNr;
 
     public Verden(int indexCeller) {
-        this.indexCeller = indexCeller;
         rutenett = new Rutenett(indexCeller, indexCeller);
         genNr = 0;
 

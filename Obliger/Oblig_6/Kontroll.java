@@ -13,10 +13,13 @@ public class Kontroll {
 
     public Kontroll(Gui gui, GameOfLife gameOfLife, String antallCeller) {
         gui.startGui(antallCeller);
+        gui.assignActionListeners(gameOfLife.verden); 
+    }
 
+    public static void startSimulasjon(Verden verden, Gui gui) {
         while (true) {
-            gameOfLife.verden.oppdatering();
-            ArrayList<Character> celleStatusTegn = gameOfLife.verden.hentStatusPaaCeller();
+            verden.oppdatering();
+            ArrayList<Character> celleStatusTegn = verden.hentStatusPaaCeller();
 
             for (int i = 0; i < gui.celleButtonList.size(); i++) {
                 JButton currentButton = gui.celleButtonList.get(i);
@@ -30,11 +33,10 @@ public class Kontroll {
                     currentButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 }
             }
-
+            
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException ex) {}
         }
-        
     }
 }

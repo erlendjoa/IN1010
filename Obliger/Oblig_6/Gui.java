@@ -47,7 +47,7 @@ public class Gui {
         otherPanel.setBackground(Color.BLACK);
         otherPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        gameOfLifeLabel.setFont(new Font("Sans Seriff" , Font.BOLD, 24));
+        gameOfLifeLabel.setFont(new Font("" , Font.BOLD, 24));
         gameOfLifeLabel.setIconTextGap(15);
         gameOfLifeLabel.setForeground(Color.WHITE);
         //otherPanel.setPreferredSize(new Dimension(0, 100));

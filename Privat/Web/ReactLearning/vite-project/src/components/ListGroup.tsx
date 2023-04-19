@@ -17,7 +17,9 @@ function ListGroup() {
 
             {items.length == 0 && <p>No Item Found</p>}
 
-            {items.map(item => <li className="list-group-item" key={item}> {item} </li>)}
+            {items.map(item => (    // Declare function with =>
+                <li className="list-group-item" key={item}> {item} </li>
+            ))}
 
         </ul>
     </>

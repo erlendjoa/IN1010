@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Kontroll {
     
-    public static void main(String[] args) {
+    public static void start(String[] args) {
         Gui gui = new Gui();
         GameOfLife gameOfLife = new GameOfLife(args[0]);  
         Kontroll kontroll = new Kontroll(gui, gameOfLife, args[0]);

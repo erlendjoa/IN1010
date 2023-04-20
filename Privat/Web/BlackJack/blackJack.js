@@ -164,5 +164,17 @@ function dealerAddRest() {
     }
 
     console.log("user wins");
-} 
+}
 
+function bet() {
+    let bet = document.getElementById("betForm");
+    bet.addEventListener("submit", function(event) {
+        event.preventDefault();
+        let element = bet.elements;
+        console.log(element);
+    })
+}
+
+function resetAll() {
+    location.reload();
+}

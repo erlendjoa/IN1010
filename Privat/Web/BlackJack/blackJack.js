@@ -29,6 +29,7 @@ var Player = /** @class */ (function () {
         var tempScore = 0;
         var tempHand = [];
         for (var i = 0; i < this.hand.length; i++) {
+            console.log(this.ids[i]);
             var currentId = this.ids[i];
             var currentCard = this.hand[i];
             currentId.src = currentCard.image; // Set current id to be the card id
@@ -74,8 +75,6 @@ var Game = /** @class */ (function () {
         dealerIds[0].src = "Assets/cardBack.jpg";
         dealerIds[1].src = "Assets/cardBack.jpg";
         document.getElementById("dealerScore").style.visibility = "hidden";
-        console.log(this.user.hand);
-        console.log(this.dealer.hand);
     }
     Game.prototype.addCardFromButton = function () {
         this.user.addCard(this.deck.splice(Math.floor(Math.random() * this.deck.length), 1)[0]);

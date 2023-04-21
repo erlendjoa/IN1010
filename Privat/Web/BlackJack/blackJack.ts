@@ -12,7 +12,7 @@ class Card {
 
 class Player {
     public ids: HTMLImageElement[];
-    private scoreId: HTMLHeadingElement;
+    public scoreId: HTMLHeadingElement;
     public hand: Card[];
     public score: number;
 
@@ -42,10 +42,12 @@ class Player {
         let tempHand: Card[] = [];
 
         for (let i = 0; i < this.hand.length; i++) {
+            console.log(this.ids[i]);
             let currentId: HTMLImageElement = this.ids[i];
             let currentCard: Card = this.hand[i];
             currentId.src = currentCard.image; // Set current id to be the card id
-            if (currentId.style.display = "hidden") {   // IF display == hidden:   WORKING??????
+            if (currentId.style.display = "none") {   // IF display == none:   WORKING??????
+                currentId.style.display = "visible";
                 currentId.style.border = "3px soild black"; // Set black border
                 currentId.style.display = "block";  // Set visible;
             }
@@ -94,8 +96,6 @@ class Game {
         dealerIds[1].src = "Assets/cardBack.jpg";
         (document.getElementById("dealerScore") as HTMLElement).style.visibility = "hidden";
 
-        console.log(this.user.hand);
-        console.log(this.dealer.hand);
     }
 
     addCardFromButton() {
@@ -107,6 +107,7 @@ class Game {
         document.getElementById("lockInn")!.style.visibility = "hidden";
         document.getElementById("addCardButton")!.style.display = "none";
         // Reveal both dealer cards;
+        this.dealer.scoreId.style.display = "block";
         this.dealer.revealCard(0);
         this.dealer.revealCard(1);
         this.dealerAddRest();

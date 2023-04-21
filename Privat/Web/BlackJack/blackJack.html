@@ -24,21 +24,21 @@
     
     <div class="cardPanel">
         <tr class="cardsOnBoard">
-            <img id="ciu0" class="card" onclick="switchAceFromButton('0')" height="150">
-            <img id="ciu1" class="card" onclick="switchAceFromButton('1')" height="150">
-            <img id="ciu2" class="card" onclick="switchAceFromButton('2')" height="150">
-            <img id="ciu3" class="card" onclick="switchAceFromButton('3')" height="150"> 
-            <img id="ciu4" class="card" onclick="switchAceFromButton('4')" height="150">
-            <img id="ciu5" class="card" onclick="switchAceFromButton('5')" height="150">
-            <img id="ciu6" class="card" onclick="switchAceFromButton('6')" height="150">
-            <img id="ciu7" class="card" onclick="switchAceFromButton('7')" height="150"> 
-            <button id="addCardButton" class="card" onclick="addCardFromButton()">+</button>
+            <img id="ciu0" class="card" onclick="game.switchAceFromButton('0')" height="150">
+            <img id="ciu1" class="card" onclick="game.switchAceFromButton('1')" height="150">
+            <img id="ciu2" class="card" onclick="game.switchAceFromButton('2')" height="150">
+            <img id="ciu3" class="card" onclick="game.switchAceFromButton('3')" height="150"> 
+            <img id="ciu4" class="card" onclick="game.switchAceFromButton('4')" height="150">
+            <img id="ciu5" class="card" onclick="game.switchAceFromButton('5')" height="150">
+            <img id="ciu6" class="card" onclick="game.switchAceFromButton('6')" height="150">
+            <img id="ciu7" class="card" onclick="game.switchAceFromButton('7')" height="150"> 
+            <button id="addCardButton" class="card" onclick="game.addCardFromButton()">+</button>
         </tr> 
         
     </div>
 
     <div class="underPanel">
-        <button id="lockInn" onclick="lockInn()">lock inn</button>
+        <button id="lockInn" onclick="game.lockInn()">lock inn</button>
         <h1 class="score" id="playerScore">0</h1>
     </div>
 
@@ -52,5 +52,5 @@
     </div>
 
 </body>
-<script src="blackJack.js""></script>
+<script src="blackJack.js"></script>
 </html>

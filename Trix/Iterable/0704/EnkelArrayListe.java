@@ -22,6 +22,7 @@ public class EnkelArrayListe {
         return new ListeIterator();
     }
 
+    
     private class ListeIterator implements Iterator<String> {
         private int index = 0;
         

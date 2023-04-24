@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Kontroll {
     
-    public static void start(String[] args) {
+    public static void start() {
         Gui gui = new Gui();
-        GameOfLife gameOfLife = new GameOfLife(args[0]);  
-        Kontroll kontroll = new Kontroll(gui, gameOfLife, args[0]);
+        GameOfLife gameOfLife = new GameOfLife("500");  
+        Kontroll kontroll = new Kontroll(gui, gameOfLife, "500");
     }
 
     public Kontroll(Gui gui, GameOfLife gameOfLife, String antallCeller) {
@@ -35,7 +35,7 @@ public class Kontroll {
             }
             
             try {
-                Thread.sleep(200);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {}
         }
     }

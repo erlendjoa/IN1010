@@ -1,8 +1,10 @@
-public class Hund implements Comparable<Hund>{
+
+
+public class Hund implements Comparable<Hund> {
     String navn;
     Kull mittKull;
     Tidspunkt minFodselstid;
-    Hund neste = null;
+    public Hund neste = null;
 
     public Hund(Kull k, String navn, Tidspunkt fodt) {
         this.navn = navn;
@@ -12,7 +14,7 @@ public class Hund implements Comparable<Hund>{
 
     @Override
     public int compareTo(Hund h) {
-        return h.minFodselstid.compareTo(minFodselstid);
+        return minFodselstid.compareTo(h.minFodselstid);
     }
 
     public Hund mor() {
@@ -31,7 +33,8 @@ public class Hund implements Comparable<Hund>{
         return (h.mor() == mor() || h.far() == far());
     }
 
-    public Hund finnEldsteKjenteOpphav() {
+    public void finnEldsteKjenteOpphav() {
         // Rekursjon
     }
+    
 }

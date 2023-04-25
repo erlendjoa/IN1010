@@ -1,9 +1,9 @@
 
 
 public class Hund implements Comparable<Hund> {
-    String navn;
-    Kull mittKull;
-    Tidspunkt minFodselstid;
+    public String navn;
+    public Kull mittKull;
+    public Tidspunkt minFodselstid;
     public Hund neste = null;
 
     public Hund(Kull k, String navn, Tidspunkt fodt) {

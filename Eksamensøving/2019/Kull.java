@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
-abstract class Kull implements Iterable<Hund> {
-    Hund mor, far;
+abstract public class Kull implements Iterable<Hund> {
+    public Hund mor, far;
 
     public Kull(Hund mor, Hund far) {
         this.mor = mor;

@@ -1,7 +1,7 @@
 
 
-class Tidspunkt implements Comparable<Tidspunkt> {
-    int[] tid;
+public class Tidspunkt implements Comparable<Tidspunkt> {
+    private int[] tid;
 
     public Tidspunkt(int aar, int mnd, int dag, int time, int min, int sek) {
         int[] tid = {aar, mnd, dag, time, min, sek};

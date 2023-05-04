@@ -28,7 +28,7 @@ public class Person implements Comparable<Person> {
     }
 
     public String toString() {
-        return "";
+        return navn;
     }
 
 

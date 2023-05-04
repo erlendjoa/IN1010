@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public abstract class Rute {
 
@@ -7,6 +7,7 @@ public abstract class Rute {
     public int rad;
     public int kol;
     public boolean provd = false;
+    public ArrayList<Tuppel> tuppel = new ArrayList<>();
     
     public Rute(Rute[][] labyrint, int rad, int kol) {
         this.labyrint = labyrint;
@@ -14,5 +15,5 @@ public abstract class Rute {
         this.kol = kol;
     }
     public abstract String toString();
-    public abstract void finn(Rute fra);
+    public abstract void finn(Rute fra, int rad, int kol);
 }

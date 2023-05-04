@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class HvitRute extends Rute {
     
@@ -12,11 +12,18 @@ public class HvitRute extends Rute {
     }
 
     @Override
-    public void finn(Rute fra) {
+    public void finn(Rute fra, int rad, int kol) {
         provd = true;
+        tuppel.add(new Tuppel(rad, kol));
+
         for (int i = 0; i < naboer.length; i++) {
             if (naboer[i].provd != true) {
-                naboer[i].finn(this);
+
+                // Nabo dupliserer this sin ArrayList<Tuppel>. 
+                naboer[i].tuppel = new ArrayList<>(tuppel);
+
+                // Nabo kjører sin finn().
+                naboer[i].finn(this, naboer[i].rad, naboer[i].kol);
             }
         }
     }

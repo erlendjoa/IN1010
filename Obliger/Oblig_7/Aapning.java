@@ -7,7 +7,10 @@ public class Aapning extends HvitRute {
     }
 
     @Override
-    public void finn(Rute fra) {
-        System.out.println("(" + rad + ", " + kol + ")");
+    public void finn(Rute fra, int rad, int kol) {
+        System.out.println("\nAapning paa: (" + rad + ", " + kol + ")");
+        for (Tuppel tp : tuppel) {
+            System.out.print("(" + tp.rad + ", " + tp.kol + ") ");
+        }
     }
 }

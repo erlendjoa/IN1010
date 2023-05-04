@@ -12,7 +12,7 @@ public class SortRute extends Rute {
     }
 
     @Override
-    public void finn(Rute fra) {
+    public void finn(Rute fra, int rad, int kol) {
 
     }
 }

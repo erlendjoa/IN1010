@@ -15,5 +15,6 @@ public class Oblig6 {
         catch (NumberFormatException e) {
             System.out.println("Ikke gydlig input");
         }
+        scn.close();
     }
 }

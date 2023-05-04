@@ -71,7 +71,7 @@ public class Labyrint {
             if (labyrint[rad][kol].toString().equals("sort")) {
                 System.out.println("Kan ikke starte i sort rute");
             } else {
-                labyrint[rad][kol].finn(null); 
+                labyrint[rad][kol].finn(null, rad, kol); 
             }
             
         }

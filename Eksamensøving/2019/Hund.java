@@ -33,8 +33,25 @@ public class Hund implements Comparable<Hund> {
         return (h.mor() == mor() || h.far() == far());
     }
 
-    public void finnEldsteKjenteOpphav() {
-        // Rekursjon
+    public Hund finnEldsteKjenteOpphav() {
+        if (mor() == null && far() == null) {
+            return this;
+        }
+        Hund farKull = null;
+        Hund morKull = null;
+
+        if (mor() == null && far() != null) {
+            farKull = far().finnEldsteKjenteOpphav();
+        }
+        if (mor() != null && far() == null) {
+            morKull = mor().finnEldsteKjenteOpphav();
+        }
+        
+        if (far() == null) return mor();
+        if (mor() == null) return far();
+        if (morKull.compareTo(farKull) == 1) {
+            return morKull;
+        } else { return farKull; }
     }
     
 }

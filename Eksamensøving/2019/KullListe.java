@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 public class KullListe extends Kull {
 
     private Hund foersteHund;
-    
+
     public KullListe(Hund mor, Hund far) {
         super(mor, far);
     }
@@ -22,9 +22,8 @@ public class KullListe extends Kull {
                     currentHund.neste = h;
                     return;
                 }
-            } 
+            }
             else {
-                System.out.println("la til " + h.navn + " som siste");
                 currentHund.neste = h;  // Maybe return statement after?
             }
             currentHund = currentHund.neste;
@@ -35,7 +34,7 @@ public class KullListe extends Kull {
         return new HundeIterator<Hund>(foersteHund);
     }
 
-    
+
     private class HundeIterator<E> implements Iterator<Hund> {
         Hund hund;
 
@@ -87,7 +86,6 @@ public class KullListe extends Kull {
         nyttKull.settInn(daughter1);
 
         System.out.println(nyttKull);
-
     }
 
 

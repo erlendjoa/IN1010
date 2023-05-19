@@ -1,0 +1,91 @@
+
+
+Oppgave 2:
+
+public void bytt(Node n) {
+    Node e = n.neste;
+    e.neste.forrige = n;
+    n.forrige.neste = e;
+    e.neste = n;
+    n.forrige = e;
+}
+
+
+Oppgave 3:
+
+public class LenkeListe<T extends Comparable<T>> {
+    private ListeHode lhode;
+    private ListeHale lhale;
+    private int antall;
+    
+    LenkeListe() {
+        this.lhode = new ListeHode(null);
+        this.lhale = new ListeHale(null);
+        lhode.neste = lhale;
+        antall = 2;
+    }
+
+    private abstract class AbstrNode {
+        T obj;
+        AbstrNode neste;
+
+        AbstrNode(T t) {
+            obj = t;
+            neste = null;
+        }
+        abstract int compareTo(AbstrNode k);
+        abstract void settInnOrdnet(AbstrNode k);
+    }
+
+    private class ListeHode extends AbstrNode {
+        ListeHode(T t) {
+            super(t);
+        }
+        public void settInnOrdnet(Node n) {
+            n.neste = lhode;
+            lhode = n;
+        }
+    }
+
+    private class ListeHale extends AbstrNode {
+        ListeHale(T t) {
+            super(t);
+        } 
+    }
+
+    private class Node extends AbstrNode {
+        Node(T t) {
+            super(t);
+        }
+        int compareTo(AbstrNode k) {
+            return obj.compareTo(k.obj);
+        }
+    }
+    
+    public int antall { return antall; };
+
+    public void settInnOrdnet(T nyComparable) {
+        antall++;
+        Node nyNode = new Node(nyComparable);
+        lhode.settInnOrdnet(nyNode);
+    }
+
+    public void settInnBak(T nyComparable) {
+        antall++;
+        Node nyNode = new Node(nyComparable);
+        lhale.neste = nyNode;
+        lhale = nyNode;
+    }
+
+    public T taUtForan() {
+        antall--;
+        Node tempNode = lhode;
+        lhode.neste = lhode;
+        return tempNode.obj;
+    }
+
+    public boolean tom() {
+        return (antall == 0);
+    }
+}
+

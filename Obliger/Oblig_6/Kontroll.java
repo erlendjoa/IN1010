@@ -35,7 +35,7 @@ public class Kontroll {
             }
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {}
         }
     }

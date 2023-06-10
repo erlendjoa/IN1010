@@ -6,7 +6,6 @@ public class Main {
             bilKollektiv.lagBilPris(new Personbil("13128398123", 250000));
             bilKollektiv.lagBilPris(new Varebil("83278414372", 560000));
         }
-
         TastaturDialog td = new TastaturDialog();
     }
 }

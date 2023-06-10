@@ -26,7 +26,7 @@ public class BilKollektiv {
 
         // let etter riktig plass for b
         Bil tempBil = hode;
-        while (tempBil.neste != null || b.pris > tempBil.pris) {
+        while (tempBil.neste != null || b.pris >= tempBil.pris) {
             tempBil = tempBil.neste;
         }
         b.neste = tempBil.neste;

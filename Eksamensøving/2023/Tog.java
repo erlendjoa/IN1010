@@ -215,4 +215,20 @@ public class Tog implements Iterable<Skinnegaaende> {
         // sG.neste vil ikke være null, fordi vi sjekke om sG er hale.
         // else if'en stopper metoden å fortsette når det er funnet en feil.
     }
+
+
+    @Override
+    public String toString() {
+        String s = "";
+        Skinnegaaende tempSG = hode;
+        while (true) {
+            s += " |" + tempSG.hentId() + "| ";
+            // om vi er på siste skinnegaaende:
+            if (tempSG == hale) {
+                break;
+            }
+            tempSG = tempSG.neste;
+        }
+        return s;
+    }
 }

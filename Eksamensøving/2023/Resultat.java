@@ -10,6 +10,7 @@ public class Resultat implements Runnable {
     @Override
     public void run() {
         while (true) {
+            System.out.println("PROVER");
             // tråden vil kjøre i loop til erFerdige == True
             if (monitor.erFerdige) {
                 Skinnegaaende sg = monitor.hentNeste();

@@ -7,6 +7,7 @@ public class Palindrome {
         Scanner scn = new Scanner(System.in);
         System.out.println("Enter a string: ");
         Palindrome.check(scn.nextLine(), 0);
+        scn.close();
     }
 
     public static void check(String answer, int i) {
